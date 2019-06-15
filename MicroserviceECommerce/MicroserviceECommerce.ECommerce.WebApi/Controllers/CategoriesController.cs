@@ -13,7 +13,7 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
     {
         DataContext db = new DataContext();
 
-        public List<CategoriesModel> GetProducts()
+        public List<CategoriesModel> GetCategories()
         {
             return db.Categories.Select(x => new CategoriesModel
             {
