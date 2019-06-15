@@ -25,7 +25,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             client.Execute(request);
         }
 
-        public static T GetMethod<T>(string host, string resource, Method httpMethod, string id)
+        public static T GetMethod<T>(string host, string resource, Method httpMethod, object id)
            where T : new()
         {
             var client = new RestClient(host);
@@ -35,7 +35,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             return response2.Data;
         }
 
-        public static void DeleteMethod(string host, string resource, Method Httpmethod, string id)
+        public static void DeleteMethod(string host, string resource, Method Httpmethod, object id)
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, Httpmethod);

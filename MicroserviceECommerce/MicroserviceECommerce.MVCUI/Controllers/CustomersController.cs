@@ -26,10 +26,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             var customer = HTTPHelpers.GetMethod<CustomersModel>("http://localhost:37776/", "Customers/GetCustomerDetail", RestSharp.Method.GET, id);
             return View(customer);
         }
-        public ActionResult UpdatePerson(CustomersModel customer)
+        public ActionResult PostCustomer(CustomersModel customer)
         {
-            HTTPHelpers.PostMethod("http://localhost:37786/", "Customers/PostCustomer", RestSharp.Method.POST, customer);
-            return RedirectToAction("GetCustomer");
+            HTTPHelpers.PostMethod("http://localhost:37776/", "Customers/PostCustomer", RestSharp.Method.POST, customer);
+            return RedirectToRoute(new { controller = "Customers", action = "GetCustomer", id = customer.CustomerID });
         }
         public ActionResult DeleteCustomer(string id)
         {
@@ -40,5 +40,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         {
             return View(new CustomersModel());
         }
+        public ActionResult UpdateCustomer()
+        {
+            return View(new CustomersModel());
+        }
+
     }
 }

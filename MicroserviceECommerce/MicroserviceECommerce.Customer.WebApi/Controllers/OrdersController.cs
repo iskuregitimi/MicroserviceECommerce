@@ -35,6 +35,28 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                 Status = x.Status
             }).ToList();
         }
+        public OrdersModel GetOrder(int id)
+        {
+            return db.Orders.Where(x => x.OrderID == id).Select(x => new OrdersModel
+            {
+                OrderID = x.OrderID,
+                CustomerID = x.CustomerID,
+                EmployeeID = x.EmployeeID,
+                OrderDate = x.OrderDate,
+                RequiredDate = x.RequiredDate,
+                ShippedDate = x.ShippedDate,
+                ShipVia = x.ShipVia,
+                Freight = x.Freight,
+                ShipName = x.ShipName,
+                ShipAddress = x.ShipAddress,
+                ShipCity = x.ShipCity,
+                ShipRegion = x.ShipRegion,
+                ShipPostalCode = x.ShipPostalCode,
+                ShipCountry = x.ShipCountry,
+                Status = x.Status
+            }).FirstOrDefault();
+        }
+
         public int AddOrder(Orders order)
         {
             db.Orders.Add(order);
@@ -71,7 +93,6 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                 Quantity = oam.Quantity,
                 Discount = oam.Discount
             };
-            AddOrder(order);
             odc.PutOrderDetails(od);
         }
     }
