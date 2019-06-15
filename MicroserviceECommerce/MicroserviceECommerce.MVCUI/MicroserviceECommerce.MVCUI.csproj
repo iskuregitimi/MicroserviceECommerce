@@ -135,11 +135,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShippersController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HTTPHelperMethpds\HTTPHelpers.cs" />
+    <Compile Include="HTTPHelperMethods\HTTPHelpers.cs" />
+    <Compile Include="Models\CategoriesModel.cs" />
+    <Compile Include="Models\CustomersModel.cs" />
+    <Compile Include="Models\OrderAddModel.cs" />
+    <Compile Include="Models\OrderDetailsModel.cs" />
+    <Compile Include="Models\OrdersModel.cs" />
+    <Compile Include="Models\ProductsModel.cs" />
+    <Compile Include="Models\ShippersModel.cs" />
+    <Compile Include="Models\SuppliersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -178,10 +193,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Customers\GetCustomers.cshtml" />
+    <Content Include="Views\Customers\CustomerAdd.cshtml" />
+    <Content Include="Views\Customers\GetCustomer.cshtml" />
+    <Content Include="Views\Customers\UpdatePerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Categories\" />
+    <Folder Include="Views\OrderDetails\" />
+    <Folder Include="Views\Orders\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="Views\Shippers\" />
+    <Folder Include="Views\Suppliers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

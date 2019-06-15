@@ -182,6 +182,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
@@ -191,6 +192,7 @@
     </Compile>
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
+    <Compile Include="Models\OrdersModel.cs" />
     <Compile Include="Models\ProductsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

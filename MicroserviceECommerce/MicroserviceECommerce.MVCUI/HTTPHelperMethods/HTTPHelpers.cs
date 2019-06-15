@@ -8,7 +8,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
 {
     public class HTTPHelpers
     {
-        public static T GetList<T>(string host, string resource, Method httpMethod)
+        public static T GetListMethod<T>(string host, string resource, Method httpMethod)
             where T : new()
         {
             var client = new RestClient(host);
@@ -17,7 +17,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             return response2.Data;
         }
 
-        public static void PostRequest(string host, string resource, Method Httpmethod, object obj)
+        public static void PostMethod(string host, string resource, Method Httpmethod, object obj)
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, Httpmethod);
@@ -25,7 +25,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             client.Execute(request);
         }
 
-        public static T GetRequestByID<T>(string host, string resource, Method httpMethod, int id)
+        public static T GetMethod<T>(string host, string resource, Method httpMethod, string id)
            where T : new()
         {
             var client = new RestClient(host);
@@ -35,7 +35,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             return response2.Data;
         }
 
-        public static void DeleteRequest(string host, string resource, Method Httpmethod, int id)
+        public static void DeleteMethod(string host, string resource, Method Httpmethod, string id)
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, Httpmethod);
