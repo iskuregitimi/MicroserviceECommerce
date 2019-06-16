@@ -28,6 +28,7 @@ namespace MicroserviceECommerce.Customer.WebApi
                 defaults: new { controller = "Customer", action = "GetCustomers", id = RouteParameter.Optional }
             );
 
+
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
