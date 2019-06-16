@@ -138,17 +138,21 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Filters\EmployeeFilter.cs" />
+    <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HTTPHelperMethods\HTTPHelpers.cs" />
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\OrderAddModel.cs" />
     <Compile Include="Models\OrderDetailsModel.cs" />
     <Compile Include="Models\OrdersModel.cs" />
@@ -206,6 +210,9 @@
     <Content Include="Views\Products\UpdateProduct.cshtml" />
     <Content Include="Views\Categories\GetCategories.cshtml" />
     <Content Include="Views\Orders\GetCutomerOrder.cshtml" />
+    <Content Include="Views\Logins\CustomerLogin.cshtml" />
+    <Content Include="Views\Logins\EmployeeLogin.cshtml" />
+    <Content Include="Views\Logins\LoginHata.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

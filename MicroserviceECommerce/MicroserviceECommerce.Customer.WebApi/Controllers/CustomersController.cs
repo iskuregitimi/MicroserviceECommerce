@@ -46,5 +46,6 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             cust.Password = customer.Password;
             db.SaveChanges();
         }
+        
     }
 }

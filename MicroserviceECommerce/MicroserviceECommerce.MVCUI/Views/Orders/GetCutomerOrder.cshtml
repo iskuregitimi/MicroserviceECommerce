@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-primary btn-sm" href="~/Orders/OrderAdd/">New Order</a>
 </p>
 <table class="table">
     <tr>
@@ -48,54 +48,58 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CustomerID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.OrderDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RequiredDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShippedDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Freight)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipAddress)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipCity)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipRegion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipPostalCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ShipCountry)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Status)
-    </td>
-    <td>
-        <a class="btn btn-primary btn-sm" href="~/Orders/GetOrder/@item.OrderID">Detail</a>
-    </td>
-    <td>
-        <a class="btn btn-success btn-sm" href="~/Orders/UpdateOrder/@item.OrderID">Update</a>
-    </td>
-    <td>
-        <a class="btn btn-warning btn-sm" href="~/Orders/DeleteOrder/@item.OrderID">Delete</a>
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Freight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipRegion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipPostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="~/Orders/GetOrder/@item.OrderID">Detail</a>
+            </td>
+            @if ((string)Session["UserType"] == "Employee")
+            {
+                <td>
+                    <a class="btn btn-success btn-sm" href="~/Orders/UpdateOrder/@item.OrderID">Update</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="~/Orders/DeleteOrder/@item.OrderID">Delete</a>
+                </td>
+            }
+        </tr>
+    }
 
 </table>

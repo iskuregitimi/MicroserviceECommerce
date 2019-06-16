@@ -21,9 +21,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Customers", "GetCustomers", "Customers")</li>
                     <li>@Html.ActionLink("Products", "GetProducts", "Products")</li>
-                    <li>@Html.ActionLink("Orders", "GetOrders", "Orders")</li>
+                    @if (Session["UserType"] == null)
+                    {
+                        <li>@Html.ActionLink("Log IN", "CustomerLogin", "Logins")</li>
+                    }
+                    else if ((string)Session["UserType"] == "Employee")
+                    {
+                        <li>@Html.ActionLink("Customers", "GetCustomers", "Customers")</li>
+                        <li>@Html.ActionLink("Orders", "GetOrders", "Orders")</li>
+                        <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
+                    }
+                    else if ((string)Session["UserType"] == "Customer")
+                    {
+                        <li>@Html.ActionLink("My Orders", "GetCustomerOrder", "Orders")</li>
+                        <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
+                    }
+                    
                 </ul>
             </div>
         </div>

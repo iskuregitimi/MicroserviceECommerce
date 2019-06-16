@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.MVCUI.HTTPHelperMethpds;
+﻿using MicroserviceECommerce.MVCUI.Filters;
+using MicroserviceECommerce.MVCUI.HTTPHelperMethpds;
 using MicroserviceECommerce.MVCUI.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             var products = HTTPHelpers.GetMethod<List<ProductsModel>>("http://localhost:37796/", "Products/GetProductsByCategoryID", RestSharp.Method.GET, id);
             return View(products);
         }
+        [EmployeeFilter]
         public ActionResult PutProduct(ProductsModel product)
         {
             HTTPHelpers.PostMethod("http://localhost:37786/", "Products/PutProduct", RestSharp.Method.PUT, product);
@@ -31,20 +33,24 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             var product = HTTPHelpers.GetMethod<ProductsModel>("http://localhost:37796/", "Products/GetProductDetail", RestSharp.Method.GET, id);
             return View(product);
         }
+        [EmployeeFilter]
         public ActionResult PostProduct(ProductsModel product)
         {
             HTTPHelpers.PostMethod("http://localhost:37786/", "Products/PostProduct", RestSharp.Method.POST, product);
             return RedirectToRoute(new { controller = "Products", action = "GetProduct", id = product.ProductID });
         }
+        [EmployeeFilter]
         public ActionResult DeleteProduct(int id)
         {
             HTTPHelpers.DeleteMethod("http://localhost:37786/", "Products/DeleteProduct", RestSharp.Method.DELETE, id);
             return RedirectToAction("GetProducts");
         }
+        [EmployeeFilter]
         public ActionResult ProductsAdd()
         {
             return View(new ProductsModel());
         }
+        [EmployeeFilter]
         public ActionResult UpdateProduct(int id)
         {
             var product = HTTPHelpers.GetMethod<ProductsModel>("http://localhost:37796/", "Products/GetProductDetail", RestSharp.Method.GET, id);
