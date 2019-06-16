@@ -47,15 +47,15 @@ namespace MicroserviceECommerce.Entities
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Employees>()
-                .HasMany(e => e.Employees1)
-                .WithOptional(e => e.Employees2)
-                .HasForeignKey(e => e.ReportsTo);
+            //modelBuilder.Entity<Employees>()
+            //    .HasMany(e => e.Employees1)
+            //    .WithOptional(e => e.Employees2)
+            //    .HasForeignKey(e => e.ReportsTo);
 
-            modelBuilder.Entity<Employees>()
-                .HasMany(e => e.Territories)
-                .WithMany(e => e.Employees)
-                .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
+            //modelBuilder.Entity<Employees>()
+            //    .HasMany(e => e.Territories)
+            //    .WithMany(e => e.Employees)
+            //    .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
 
             modelBuilder.Entity<Order_Details>()
                 .Property(e => e.UnitPrice)
@@ -73,10 +73,10 @@ namespace MicroserviceECommerce.Entities
                 .Property(e => e.Status)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Orders>()
-                .HasMany(e => e.Order_Details)
-                .WithRequired(e => e.Orders)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Orders>()
+            //    .HasMany(e => e.Order_Details)
+            //    .WithRequired(e => e.Orders)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Products>()
                 .Property(e => e.UnitPrice)
@@ -96,10 +96,10 @@ namespace MicroserviceECommerce.Entities
                 .WithRequired(e => e.Region)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Shippers>()
-                .HasMany(e => e.Orders)
-                .WithOptional(e => e.Shippers)
-                .HasForeignKey(e => e.ShipVia);
+            //modelBuilder.Entity<Shippers>()
+            //    .HasMany(e => e.Orders)
+            //    .WithOptional(e => e.Shippers)
+            //    .HasForeignKey(e => e.ShipVia);
 
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)

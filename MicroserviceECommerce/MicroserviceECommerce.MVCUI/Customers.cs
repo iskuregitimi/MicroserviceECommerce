@@ -5,8 +5,12 @@ using System.Web;
 
 namespace MicroserviceECommerce.MVCUI
 {
-    public class CustomerModel
+    public class Customers
     {
+
+
+
+        public List<Orders> Ordersmodel { get; set; }
   
             public List<object> CustomerDemographics { get; set; }
             public string CustomerID { get; set; }

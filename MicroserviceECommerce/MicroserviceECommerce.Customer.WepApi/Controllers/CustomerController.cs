@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace MicroserviceECommerce.Customer.WepApi.Controllers
 {
-    public class CustomerController : ApiController    // BEN ANLAMIYORUM METOD YAZMA İŞİ SADECE CONTOLLAR DA YPILMAYACAKMI BEN NERDE YAZIYORUM ONU DA BİLMİYORMİ
+    public class CustomerController : ApiController    
     {
         [HttpGet]
         public List<customerDTO> ListCustomers()
@@ -39,10 +39,10 @@ namespace MicroserviceECommerce.Customer.WepApi.Controllers
             return c.CustomerID + "database eklendi";
         }
         [HttpGet]
-        public Customers GetCustomer(string id)
+        public customerDTO GetCustomer(string id)
         {
             CustomrBLL customerbll = new CustomrBLL();
-           Customers c= customerbll.GetoneCustomer(id);
+            customerDTO c = customerbll.onecust(id);
             return c;
 
 
@@ -62,9 +62,27 @@ namespace MicroserviceECommerce.Customer.WepApi.Controllers
             c.Address = c.Address;
             customerbll.UpdateCustomer(c);
 
-
-
+        }
+        [HttpGet]
+        public List<Orders> OrderList(string id)
+        {
+            CustomrBLL customerbll = new CustomrBLL();
+            List<Orders> orderlistt = customerbll.OrderListrelatedtoCustomer(id);
+     
+       
+            return orderlistt;
 
         }
+        [HttpGet]
+        public List<OrderDTO> Listorders(string id)
+        {
+            CustomrBLL customerbll = new CustomrBLL();
+            List<OrderDTO> s = customerbll.Listorder(id);
+            return s;
+
+        }
+
+
     }
 }
+

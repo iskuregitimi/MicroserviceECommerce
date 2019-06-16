@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MicroserviceECommerce.Customer.WepApi.customerDTO>
+﻿@model IEnumerable<MicroserviceECommerce.MVCUI.Customers>
 
 @{
     ViewBag.Title = "ListCustomer";
@@ -12,7 +12,7 @@
     @Html.ActionLink("Create New Customer", "CreateCustomer")
 </p>
 <div style="background:#69aa54">
-
+    
     <table class="table">
         <tr>
             <th>
@@ -36,14 +36,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.City)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Country)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Phone)
             </th>
-
+           
             <th></th>
         </tr>
 
@@ -71,19 +76,23 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.City)
                 </td>
-
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.Region)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Country)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
-
+               
                 <td>
-                    <span class="btn btn-warning">@Html.ActionLink("Edit", "UpdateCustomer", new {  id=item.CustomerID}) |</span>
+                    <span class="btn btn-warning">@Html.ActionLink("Edit", "UpdateCustomer", new { id = item.CustomerID }) |</span>
                     <span class="btn btn-primary" style="background:#adc6c9">
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
                     </span>
 
                     <span class="btn btn-success" style="background:#28fffd">
@@ -95,4 +104,5 @@
         }
 
     </table>
-</div>
+    </div>
+ 

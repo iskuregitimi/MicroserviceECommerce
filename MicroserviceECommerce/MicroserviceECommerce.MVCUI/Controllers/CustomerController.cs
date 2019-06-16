@@ -1,5 +1,5 @@
-﻿using MicroserviceECommerce.Customer.WepApi;
-using MicroserviceECommerce.Entities;
+﻿
+
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 
         public ActionResult ListCustomer()
         {
-            List<customerDTO> customer = new List<customerDTO>();
+            List<Customers> customer = new List<Customers>();
 
-            customer = HTTPHELPER.SendRequestList<List<customerDTO>>("http://localhost:52373", "Customer/ListCustomers", Method.GET);
+            customer = HTTPHELPER.SendRequestList<List<Customers>>("http://localhost:52373", "Customer/ListCustomers", Method.GET);
             return View(customer);
         }
         
@@ -27,9 +27,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 
         }
      [HttpPost]
-        public ActionResult CreateCustomer(customerDTO customer)
+        public ActionResult CreateCustomer(Customers customer)
         {
-            HTTPHELPER.SendRequestCreate<customerDTO>("http://localhost:52373", "Customer/AddCustomer", customer, Method.POST);
+            HTTPHELPER.SendRequestCreate<Customers>("http://localhost:52373", "Customer/AddCustomer", customer, Method.POST);
             return RedirectToAction("ListCustomer");
 
 
@@ -37,7 +37,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
       [HttpGet]
         public ActionResult UpdateCustomer(string id)
         {
-            var tk = HTTPHELPER.SendRequestParam<customerDTO>("http://localhost:52373", "Customer/GetCustomer",id, Method.GET);
+            var tk = HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/GetCustomer",id, Method.GET);
 
 
             return View(tk);
@@ -47,13 +47,23 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 
         [HttpPost]
         
-        public ActionResult UpdateCustomer(customerDTO model)
+        public ActionResult UpdateCustomer(Customers model)
         {
-            HTTPHELPER.SendRequestCreate<customerDTO>("http://localhost:52373", "Customer/UpdateCustomer", model, Method.POST);
+            HTTPHELPER.SendRequestCreate<Customers>("http://localhost:52373", "Customer/UpdateCustomer", model, Method.POST);
             return RedirectToAction("ListCustomer");
 
         }
-
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            Customers k = new Customers();
+            List<Orders> o = new  List<Orders>();
+            k = HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/GetCustomer", id, Method.GET);
+            o = HTTPHELPER.SendRequestParam<List<Orders>>("http://localhost:52373", "Customer/Listorders", id, Method.GET);
+            k.Ordersmodel = o;
+            return View(k);
+         
+        }
 
 
     }

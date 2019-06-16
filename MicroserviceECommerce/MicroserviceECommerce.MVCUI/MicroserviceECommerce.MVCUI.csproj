@@ -137,12 +137,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="CustomerModel.cs" />
-    <Compile Include="DTOLAR\customerDTO.cs" />
+    <Compile Include="Customers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HTTPHELPER.cs" />
+    <Compile Include="Orders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,9 +181,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
     <Content Include="Views\Customer\ListCustomer.cshtml" />
     <Content Include="Views\Customer\CreateCustomer.cshtml" />
-    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -201,12 +202,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MicroserviceECommerce.Entities\MicroserviceECommerce.Entities.csproj">
-      <Project>{0f57d261-956e-40da-b23b-df360a1be793}</Project>
-      <Name>MicroserviceECommerce.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
