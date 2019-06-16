@@ -52,12 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="CustomerDemographics.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Employees.cs" />
+    <Compile Include="EntityFramework\RepositoryBase.cs" />
+    <Compile Include="EntityFramework\Reposityory.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Order_Details.cs" />
     <Compile Include="Products.cs" />

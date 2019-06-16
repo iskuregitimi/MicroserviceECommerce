@@ -5,23 +5,27 @@ using MicroserviceECommerce.Entities.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-
 
 namespace MicroserviceECommerce.Employee.WebApi.Controllers
 {
-    public class HomeController : ApiController
+    public class EmployeeController : ApiController
     {
-        Repository<EmployeeModell> employee_repo = new Repository<EmployeeModell>();
+
+        Repository<Employees> employee_repo = new Repository<Employees>();
 
         public List<EmployeeModell> GetEmployees()
         {
-            var employee = employee_repo.List();
-            List<EmployeeModell> employeeModels = new List<EmployeeModell>();
-            foreach (var item in employee)
+            List<EmployeeModell> employeeModell = new List<EmployeeModell>();
+            var employe= employee_repo.List();
+
+
+            foreach (var item in employe)
             {
-                EmployeeModell employ = new EmployeeModell
+
+                EmployeeModell model = new EmployeeModell
                 {
                     Password = item.Password,
                     LastName = item.LastName,
@@ -41,14 +45,12 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
                     Notes = item.Notes,
                     ReportsTo = item.ReportsTo,
                     PhotoPath = item.PhotoPath
-
                 };
-                employeeModels.Add(employ);
-
+                employeeModell.Add(model);
+                
             }
-
-            return employeeModels;
-
+            return employeeModell;
         }
+
     }
 }
