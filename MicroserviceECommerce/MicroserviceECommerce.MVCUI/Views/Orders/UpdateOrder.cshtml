@@ -7,36 +7,16 @@
 @using (Html.BeginForm("PostOrder", "Orders", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.Label("CustomerID")
-        @Html.LabelFor(x => x.CustomerID, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.Label("EmployeeID")
-        @Html.LabelFor(x => x.EmployeeID, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.Label("Order Date")
-        @Html.LabelFor(x => x.OrderDate, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.Label("Required Date")
-        @Html.LabelFor(x => x.RequiredDate, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.Label("Shipped Date")
-        @Html.LabelFor(x => x.ShippedDate, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
         @Html.Label("Ship Via")
-        @Html.LabelFor(x => x.ShipVia, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.ShipVia, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.Label("Freight")
-        @Html.LabelFor(x => x.Freight, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Freight, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.Label("Ship Name")
-        @Html.LabelFor(x => x.ShipName, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.ShipName, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.Label("Ship Address")
@@ -64,6 +44,11 @@
     </div>
 
     @Html.HiddenFor(x => x.OrderID)
+    @Html.HiddenFor(x => x.EmployeeID)
+    @Html.HiddenFor(x => x.CustomerID)
+    @Html.HiddenFor(x => x.OrderDate)
+    @Html.HiddenFor(x => x.ShippedDate)
+    @Html.HiddenFor(x => x.RequiredDate)
     <button class="btn btn-primary" type="submit">Güncelle</button>
 }
 
