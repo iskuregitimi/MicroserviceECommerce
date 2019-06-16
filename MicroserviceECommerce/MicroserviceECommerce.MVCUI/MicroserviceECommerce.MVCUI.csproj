@@ -201,12 +201,16 @@
     <Content Include="Views\Orders\GetOrder.cshtml" />
     <Content Include="Views\Orders\UpdateOrder.cshtml" />
     <Content Include="Views\Orders\OrderAdd.cshtml" />
+    <Content Include="Views\Products\GetProducts.cshtml" />
+    <Content Include="Views\Products\GetProductsByCategory.cshtml" />
+    <Content Include="Views\Products\ProductsAdd.cshtml" />
+    <Content Include="Views\Products\GetProduct.cshtml" />
+    <Content Include="Views\Products\UpdateProduct.cshtml" />
+    <Content Include="Views\Categories\GetCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Categories\" />
     <Folder Include="Views\OrderDetails\" />
-    <Folder Include="Views\Products\" />
     <Folder Include="Views\Shippers\" />
     <Folder Include="Views\Suppliers\" />
   </ItemGroup>

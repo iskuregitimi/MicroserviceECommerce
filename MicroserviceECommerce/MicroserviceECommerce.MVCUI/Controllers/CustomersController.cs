@@ -40,9 +40,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         {
             return View(new CustomersModel());
         }
-        public ActionResult UpdateCustomer()
+        public ActionResult UpdateCustomer(string id)
         {
-            return View(new CustomersModel());
+            var customer = HTTPHelpers.GetMethod<CustomersModel>("http://localhost:37776/", "Customers/GetCustomerDetail", RestSharp.Method.GET, id);
+            return View(customer);
         }
 
     }
