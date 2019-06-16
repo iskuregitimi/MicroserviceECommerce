@@ -39,6 +39,13 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
         public void DeleteCustomer(string id)
         {
             var customer = db.Customers.FirstOrDefault(x => x.CustomerID == id);
+            var orders = db.Orders.Where(x => x.CustomerID == id).ToList();
+            foreach (var item in orders)
+            {
+                var order = db.Order_Details.Where(x => x.OrderID == item.OrderID).ToList();
+                db.Order_Details.RemoveRange(order);
+            }
+            db.Orders.RemoveRange(orders);
             db.Customers.Remove(customer);
             db.SaveChanges();
         }

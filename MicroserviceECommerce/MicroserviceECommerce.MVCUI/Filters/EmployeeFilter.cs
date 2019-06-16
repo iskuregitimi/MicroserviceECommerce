@@ -11,7 +11,7 @@ namespace MicroserviceECommerce.MVCUI.Filters
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if ((filterContext.HttpContext.Session["Login"] == null) && ((string)filterContext.HttpContext.Session["UserType"] != "Employee"))
+            if ((string)filterContext.HttpContext.Session["UserType"] != "Employee")
             {
                 filterContext.Result = new RedirectResult("~/Logins/LoginHata");
             }
