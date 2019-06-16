@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +20,18 @@ namespace MicroserviceECommerce.Customer.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+               name: "NewApi",
+               routeTemplate: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = RouteParameter.Optional }
+           );
+
+            var json = config.Formatters.JsonFormatter;
+
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }
