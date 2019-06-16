@@ -205,6 +205,7 @@
     <Content Include="Views\Products\GetProduct.cshtml" />
     <Content Include="Views\Products\UpdateProduct.cshtml" />
     <Content Include="Views\Categories\GetCategories.cshtml" />
+    <Content Include="Views\Orders\GetCutomerOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

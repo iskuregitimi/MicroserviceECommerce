@@ -21,9 +21,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             HTTPHelpers.PostMethod("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, orders);
             return RedirectToAction("GetOrders");
         }
-        public ActionResult GetCutomerOrder(int id)
+        public ActionResult GetCutomerOrder(string id)
         {
-            var order = HTTPHelpers.GetMethod<OrdersModel>("http://localhost:37776/", "Orders/GetCustomerOrders", RestSharp.Method.GET, id);
+            var order = HTTPHelpers.GetMethod<List<OrdersModel>>("http://localhost:37776/", "Orders/GetCustomerOrders", RestSharp.Method.GET, id);
             return View(order);
         }
         public ActionResult GetOrder(int id)
