@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace MicroserviceECommerce.Customer.WebApi
 {
@@ -15,10 +17,12 @@ namespace MicroserviceECommerce.Customer.WebApi
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            name: "NewRoute",
+     routeTemplate: "{controller}/{action}/{id}",
+     defaults: new { controller = "Login", action = "GetCustomer", id = UrlParameter.Optional }
+ );
+      
+
         }
     }
 }

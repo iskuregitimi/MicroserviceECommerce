@@ -66,6 +66,9 @@ namespace MicroserviceECommerce.Entities
 
         public int? ReportsTo { get; set; }
 
+        public string Password { get; set; }
+        public string UserName { get; set; }
+
         [StringLength(255)]
         public string PhotoPath { get; set; }
 

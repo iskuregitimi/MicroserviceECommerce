@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using MicroserviceECommerce.MVCUI.Models
+
+@{ 
+    CustomerModel_ customer =(CustomerModel_) Session["Login"];
+    EmployeeModel_ employee = (EmployeeModel_)Session["EmployeeLogin"];
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,9 +26,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (customer != null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Customer")</li>
+                    }
+                    else if (customer == null && employee == null)
+                    {
+                        <li>@Html.ActionLink("Customer Login", "CustomerLogin", "Customer")</li>
+                        <li>@Html.ActionLink("Employee Login", "EmployeeLogin", "EmployeeLogin")</li>
+                    }
+                    else if (employee != null)
+                    {
+                        <li>@Html.ActionLink("Customers", "CustomerList", "Customer")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "EmployeeLogin")</li>
+                    }
                 </ul>
             </div>
         </div>

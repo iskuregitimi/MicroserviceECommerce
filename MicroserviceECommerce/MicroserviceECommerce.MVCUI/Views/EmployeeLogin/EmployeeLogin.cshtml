@@ -1,0 +1,22 @@
+﻿@model MicroserviceECommerce.MVCUI.Models.EmployeeModel_
+
+@{
+    ViewBag.Title = "EmployeeLogin";
+}
+
+<h2>EmployeeLogin</h2>
+
+
+@using (Html.BeginForm("EmployeeLogin", "EmployeeLogin", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.EmployeeID, new { @class = "form-control", placeholder = "Customer ID" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control", placeholder = "Password" })
+    </div>
+    <button class="btn btn-primary" type="submit"> Login  </button>
+
+}
