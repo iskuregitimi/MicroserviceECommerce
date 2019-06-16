@@ -6,6 +6,7 @@
 }
 
 <table class="table">
+    <tr>@{Html.RenderAction("GetCategories", "Categories");}</tr>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProductName)

@@ -19,8 +19,7 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
             {
                 CategoryID = x.CategoryID,
                 CategoryName = x.CategoryName,
-                Description = x.Description,
-                Picture = x.Picture
+                Description = x.Description
             }).ToList();
         }
     }
