@@ -39,5 +39,15 @@ namespace MicroserviceECommerce.MVCUI
             var response2 = client.Execute<T>(request);
             return response2.Data;
         }
+
+        public static T SendRequestParamdetail<T>(string host, string resource, int id, Method httpMethod)
+         where T : new()
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource + "?id={id}", httpMethod);
+            request.AddParameter("id", id, ParameterType.UrlSegment);
+            var response2 = client.Execute<T>(request);
+            return response2.Data;
+        }
     }
 }

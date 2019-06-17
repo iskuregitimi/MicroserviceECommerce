@@ -47,6 +47,16 @@ namespace MicroserviceECommerce.Customer.WepApi.Controllers
 
 
         }
+
+        [HttpGet]
+        public Customers GetCustomerclass(string id)
+        {
+            CustomrBLL customerbll = new CustomrBLL();
+            Customers c = customerbll.GetoneCustomer(id);
+                return c;
+
+
+        }
         public void UpdateCustomer(Customers custom)
         {
             CustomrBLL customerbll = new CustomrBLL();
@@ -73,15 +83,18 @@ namespace MicroserviceECommerce.Customer.WepApi.Controllers
             return orderlistt;
 
         }
-        [HttpGet]
-        public List<OrderDTO> Listorders(string id)
+
+
+        [HttpPost]
+        public void DeleteCustomer(string id)
         {
             CustomrBLL customerbll = new CustomrBLL();
-            List<OrderDTO> s = customerbll.Listorder(id);
-            return s;
+
+            customerbll.DeleteCustomer(id);
 
         }
 
+  
 
     }
 }

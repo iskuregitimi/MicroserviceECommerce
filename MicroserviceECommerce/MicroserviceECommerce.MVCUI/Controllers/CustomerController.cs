@@ -37,7 +37,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
       [HttpGet]
         public ActionResult UpdateCustomer(string id)
         {
-            var tk = HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/GetCustomer",id, Method.GET);
+            var tk = HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/GetCustomerclass", id, Method.GET);
 
 
             return View(tk);
@@ -53,18 +53,32 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             return RedirectToAction("ListCustomer");
 
         }
+        //Customer e göre order listele
         [HttpGet]
         public ActionResult Details(string id)
         {
             Customers k = new Customers();
             List<Orders> o = new  List<Orders>();
-            k = HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/GetCustomer", id, Method.GET);
-            o = HTTPHELPER.SendRequestParam<List<Orders>>("http://localhost:52373", "Customer/Listorders", id, Method.GET);
-            k.Ordersmodel = o;
-            return View(k);
+            //k = HTTPHELPER.SendRequestParam<Customers>("http://localhost:37796", "CustomerEcommerce/GetCustomer", id, Method.GET);
+            o = HTTPHELPER.SendRequestParam<List<Orders>>("http://localhost:37796", "CustomerEcommerce/Listorders", id, Method.GET);
+          
+            return View(o);
          
         }
+        //Customer sil
+      
+        public ActionResult Delete(string id)
+        {
+            HTTPHELPER.SendRequestParam<Customers>("http://localhost:52373", "Customer/DeleteCustomer", id, Method.POST);
+            return RedirectToAction("ListCustomer");
+        }
 
+        public ActionResult Detaylar(int id)
+        {
+            List<orderdetailsmodel> o = new List<orderdetailsmodel>();
+            o = HTTPHELPER.SendRequestParamdetail<List<orderdetailsmodel>>("http://localhost:37796", "CustomerEcommerce/OrderDetailList", id, Method.GET);
+            return View(o);
 
+        }
     }
 }

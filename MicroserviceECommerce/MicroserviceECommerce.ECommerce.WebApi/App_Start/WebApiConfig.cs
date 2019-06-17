@@ -19,6 +19,7 @@ namespace MicroserviceECommerce.ECommerce.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
             config.Routes.MapHttpRoute(
 name: "YeniRoute",
 routeTemplate: "{controller}/{action}/{id}",

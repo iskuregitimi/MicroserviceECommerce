@@ -56,26 +56,26 @@ namespace MicroserviceECommerce.Customer.WepApi
         }
 
 
-        public List<OrderDTO> Listorder(string id)
-        {
+        //public List<OrderDTO> Listorder(string id)
+        //{
 
-            List<OrderDTO> o = db.Orders.Select(x => new OrderDTO()
-            {
-                ShipAddress = x.ShipAddress,
-                CustomerID = x.CustomerID,
-                OrderID=x.OrderID,
-                
-
-
-
-            }).Where(x => x.CustomerID == id).ToList();
+        //    List<OrderDTO> o = db.Orders.Select(x => new OrderDTO()
+        //    {
+        //        ShipAddress = x.ShipAddress,
+        //        CustomerID = x.CustomerID,
+        //        OrderID = x.OrderID,
 
 
 
 
-            return o;
-        }
-        public customerDTO onecust (string id)
+        //    }).Where(x => x.CustomerID == id).ToList();
+
+
+
+
+        //    return o;
+        //}
+        public customerDTO onecust(string id)
         {
 
             customerDTO customers = db.Customers.Select(x => new customerDTO()
@@ -89,12 +89,53 @@ namespace MicroserviceECommerce.Customer.WepApi
                 ContactName = x.ContactName,
                 Country = x.Country,
                 ContactTitle = x.ContactTitle,
-            }).Where(x=>x.CustomerID==id).FirstOrDefault();
+            }).Where(x => x.CustomerID == id).FirstOrDefault();
 
             return customers;
         }
 
 
+
+
+
+
+
+
+        public int DeleteCustomer(string id)
+        {
+            Customers customer = db.Customers.Where(x => x.CustomerID == id).FirstOrDefault();
+            var Orders = db.Orders.Where(x => x.CustomerID == customer.CustomerID).ToList();       
+           
+
+            foreach (var item in Orders)
+            {
+                var details = db.Order_Details.Where(x => x.OrderID == item.OrderID).ToList();
+
+                foreach (var item2 in details)
+                {
+                    db.Order_Details.Remove(item2);
+                }
+
+                db.Orders.Remove(item);
+            }
+
+            db.Customers.Remove(customer);
+            int result = db.SaveChanges();
+            return result;
+
+
+
+
+        }
+
+
+
+        //public void DeleteOrder(int id)
+        //{
+        //    Order_Details o = db.Order_Details.Where(x => x.OrderID == id).FirstOrDefault();
+        //    db.Order_Details.Remove(o);
+        //    db.SaveChanges();
+        //}
 
 
     }

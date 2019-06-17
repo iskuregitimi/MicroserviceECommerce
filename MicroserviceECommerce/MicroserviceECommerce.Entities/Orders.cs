@@ -11,15 +11,16 @@ namespace MicroserviceECommerce.Entities
 
     public partial class Orders
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Orders()
         {
-            Order_Details = new HashSet<Order_Details>();
+            //Order_Details = new HashSet<Order_Details>();
         }
-      
+
         [Key]
         public int OrderID { get; set; }
-    
+
         [StringLength(5)]
         public string CustomerID { get; set; }
         [DataMember]
@@ -60,9 +61,9 @@ namespace MicroserviceECommerce.Entities
         public virtual Customers Customers { get; set; }
         [DataMember]
         public virtual Employees Employees { get; set; }
-        [DataMember]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Details> Order_Details { get; set; }
+        //[DataMember]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Order_Details> Order_Details { get; set; }
 
         //public virtual Shippers Shippers { get; set; }
     }
