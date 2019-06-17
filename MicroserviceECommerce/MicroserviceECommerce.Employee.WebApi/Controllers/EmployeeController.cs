@@ -73,6 +73,34 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
             employee_repo.Insert(employee);
 
         }
+        [HttpPost]
+        public void UpdateEmployee(Employees model)
+        {
+            Employees employee = new Employees();
+
+
+            employee.LastName = model.LastName;
+            employee.FirstName = model.FirstName;
+            employee.Title = model.Title;
+            employee.TitleOfCourtesy = model.TitleOfCourtesy;
+            employee.BirthDate = model.BirthDate;
+            employee.HireDate = model.HireDate;
+            employee.Address = model.Address;
+            employee.City = model.City;
+            employee.Region = model.Region;
+            employee.PostalCode = model.PostalCode;
+            employee.Country = model.Country;
+            employee.HomePhone = model.HomePhone;
+            employee.Extension = model.Extension;
+            employee.Photo = model.Photo;
+            employee.Notes = model.Notes;
+            employee.ReportsTo = model.ReportsTo;
+            employee.PhotoPath = model.PhotoPath;
+            employee.Password = model.Password;
+
+            employee_repo.Update(employee);
+
+        }
 
     }
 }

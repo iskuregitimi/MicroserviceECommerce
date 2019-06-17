@@ -31,5 +31,18 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             HttpHelper.AddRequestParam<EmployeeModell>("http://localhost:37786/", "Employee/InsertEmployee", model,Method.POST);
             return View();
         }
+
+        public ActionResult UpdateEmployee()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult UpdateEmployee(EmployeeModell employeeModell)
+        {
+            HttpHelper.AddRequestParam<EmployeeModell>("http://localhost:37786/", "Employee/UpdateEmployee", employeeModell, Method.POST);
+            return View();
+        }
     }
 }
