@@ -32,11 +32,11 @@ namespace MicroserviceECommerce.MVCUI.HttpHelpers
             request.AddJsonBody(t);
             client.Execute(request);
         }
-        public static void Edit<T>(string host, string resource, Method Httpmethod, T t, string Id)
+        public static void Edit<T>(string host, string resource, Method Httpmethod, T t)
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, Httpmethod);
-            request.AddParameter("Id", Id);
+            //request.AddParameter("Id", Id);
             request.AddJsonBody(t);
             client.Execute(request);
         }

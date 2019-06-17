@@ -14,13 +14,13 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         // GET: Customers
         public ActionResult GetAllCustomers()
         {
-            List<Customer> customerList = HttpHelperMethods.GetAll<List<Customer>>("http://localhost:37776", "api/Customers", Method.GET);
+            List<Customer> customerList = HttpHelperMethods.GetAll<List<Customer>>("http://localhost:37776", "api/Customers/GetAll", Method.GET);
             return View(customerList);
         }
 
         public ActionResult GetCustomerWithId(string Id)
         {
-            Customer customer = HttpHelperMethods.GetWithId<Customer>("http://localhost:37776", "api/Customers", Method.GET, Id);
+            Customer customer = HttpHelperMethods.GetWithId<Customer>("http://localhost:37776", "api/Customers/GetWithId", Method.GET, Id);
             return View(customer);
         }
         [HttpGet]
@@ -31,24 +31,25 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         [HttpPost]
         public ActionResult AddCustomer(Customer customer)
         {
-            HttpHelperMethods.Add<Customer>("http://localhost:37776", "api/Customers", Method.POST, customer);
+            HttpHelperMethods.Add<Customer>("http://localhost:37776", "api/Customers/PostAdd", Method.POST, customer);
             return RedirectToAction("GetAllCustomers");
         }
         [HttpGet]
         public ActionResult EditCustomer(string Id)
         {
-            Customer customer = HttpHelperMethods.GetWithId<Customer>("http://localhost:37776", "api/Customers", Method.GET, Id);
+            Customer customer = HttpHelperMethods.GetWithId<Customer>("http://localhost:37776", "api/Customers/GetWithId", Method.GET, Id);
             return View(customer);
         }
         [HttpPost]
-      public ActionResult EditCustomer(Customer customer, string Id)
+        public ActionResult EditCustomer(Customer customer)
         {
-            HttpHelperMethods.Edit<Customer>("http://localhost:37776", "api/Customers", Method.POST, customer, Id);
+            HttpHelperMethods.Edit<Customer>("http://localhost:37776", "api/Customers/Update", Method.POST, customer);
             return RedirectToAction("GetAllCustomers");
         }
-        public ActionResult DeleteCustomer(Customer customer, string Id)
+
+        public ActionResult DeleteCustomer(string Id)
         {
-            HttpHelperMethods.Delete<Customer>("http://localhost:37776", "api/Customers", Method.DELETE, Id);
+            HttpHelperMethods.Delete<Customer>("http://localhost:37776", "api/Customers/Delete", Method.DELETE, Id);
             return RedirectToAction("GetAllCustomers");
         }
 

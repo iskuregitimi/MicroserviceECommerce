@@ -1,6 +1,4 @@
-﻿
-
-using MicroserviceECommerce.Customer.WebApi.Models;
+﻿using MicroserviceECommerce.Customer.WebApi.Models;
 using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
@@ -60,7 +58,6 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                 Password = customer.Password
             };
 
-
             return modelCustomer;
         }
         public int PostAdd(Entities.Customer customer)
@@ -71,9 +68,9 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             return result;
         }
         [HttpPost]
-        public int Update(Entities.Customer _newCustomer, string Id)
+        public int Update(Entities.Customer _newCustomer)
         {
-            Entities.Customer oldCustomer = data.Customers.FirstOrDefault(x => x.CustomerID == Id);
+            Entities.Customer oldCustomer = data.Customers.FirstOrDefault(x => x.CustomerID == _newCustomer.CustomerID);
 
             oldCustomer.CompanyName = _newCustomer.CompanyName;
             oldCustomer.ContactName = _newCustomer.ContactName;
@@ -89,14 +86,27 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             int result = data.SaveChanges();
             return result;
         }
+
         public int Delete(string Id)
         {
             Entities.Customer customer = data.Customers.FirstOrDefault(x => x.CustomerID == Id);
+            var orders = data.Orders.Where(x => x.CustomerID == customer.CustomerID).ToList();
+
+            foreach (var item in orders)
+            {
+                var details = data.Order_Details.Where(x => x.OrderID == item.OrderID).ToList();
+
+                foreach (var item2 in details)
+                {
+                    data.Order_Details.Remove(item2);
+                }
+
+                data.Orders.Remove(item);
+            }
+
             data.Customers.Remove(customer);
             int result = data.SaveChanges();
             return result;
         }
-
-
     }
 }
