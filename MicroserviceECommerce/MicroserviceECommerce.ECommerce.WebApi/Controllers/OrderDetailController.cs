@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.Entities;
+﻿using MicroserviceECommerce.ECommerce.WebApi.Models;
+using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,25 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
     public class OrderDetailController:ApiController
     {
         RepositoryPattern<Order_Details> repo = new RepositoryPattern<Order_Details>();
-        public List<Order_Details> GetOrderDetails(int Id)
+        public List<OrderDetailModel> GetOrderDetails(int Id)
         {
-            List<Order_Details> orderdetails = repo.List(x=>x.OrderID==Id);
-            return orderdetails;
+            using (DataContext db = new DataContext())
+            {
+                List<OrderDetailModel> orderDetailModels = db.Order_Details.Where(x => x.OrderID == Id).Select(a => new OrderDetailModel
+                {
+                    OrderID=a.OrderID,
+                    Discount=a.Discount,
+                    Orders=a.Orders.ShipName,
+                    ProductID=a.ProductID,
+                    Products=a.Products.ProductName,
+                    Quantity=a.Quantity,
+                    UnitPrice=a.UnitPrice
+                }).ToList();
+                return orderDetailModels;
+            }
+
+           
+           
         }
     }
 }

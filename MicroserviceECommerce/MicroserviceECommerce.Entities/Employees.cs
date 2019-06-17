@@ -11,10 +11,10 @@ namespace MicroserviceECommerce.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employees()
         {
-            //EmployeeRol = new HashSet<EmployeeRol>();
-            //Employees1 = new HashSet<Employees>();
-            //Orders = new HashSet<Orders>();
-            //Territories = new HashSet<Territories>();
+            EmployeeRol = new HashSet<EmployeeRol>();
+            Employees1 = new HashSet<Employees>();
+            Orders = new HashSet<Orders>();
+            Territories = new HashSet<Territories>();
         }
 
         [Key]
@@ -73,18 +73,18 @@ namespace MicroserviceECommerce.Entities
         [StringLength(255)]
         public string PhotoPath { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<EmployeeRol> EmployeeRol { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeRol> EmployeeRol { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Employees> Employees1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employees> Employees1 { get; set; }
 
-        //public virtual Employees Employees2 { get; set; }
+        public virtual Employees Employees2 { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual Orders Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Territories> Territories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Territories> Territories { get; set; }
     }
 }

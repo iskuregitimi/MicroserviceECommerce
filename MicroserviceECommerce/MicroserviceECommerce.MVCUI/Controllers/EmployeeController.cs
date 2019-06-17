@@ -19,7 +19,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         public ActionResult GetEmployees()
         {
             List<Employees> employees = new List<Employees>();
-            employees = HttpHelper.GetList<List<Employees>>("http://localhost:37776", "Employee/GetEmployees", Method.GET);
+            employees =HttpHelper.HttpHelper.GetList<List<Employees>>("http://localhost:37786", "Employee/GetEmployees", Method.GET);
             return View(employees);
         }
     }

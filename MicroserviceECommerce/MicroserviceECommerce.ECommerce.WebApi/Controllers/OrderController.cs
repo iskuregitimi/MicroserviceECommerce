@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.Entities;
+﻿using MicroserviceECommerce.ECommerce.WebApi.Models;
+using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,61 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
     {
         RepositoryPattern<Orders> repo = new RepositoryPattern<Orders>();
         [HttpGet]
-        public List<Orders> GetOrders()
+        public List<OrderModel> GetOrders()
         {
-            List<Orders> orders = repo.List();
-            return orders;
+            using (DataContext db=new DataContext())
+            {
+                return db.Orders.Select(x => new OrderModel
+                {
+                    CustomerID=x.CustomerID,
+                    EmployeeID=x.EmployeeID,
+                    Freight=x.Freight,
+                    OrderDate=x.OrderDate,
+                    OrderID=x.OrderID,
+                    RequiredDate=x.RequiredDate,
+                    ShipAddress=x.ShipAddress,
+                    ShipCity=x.ShipCity,
+                    ShipCountry=x.ShipCountry,
+                    ShipName=x.ShipName,
+                    ShippedDate=x.ShippedDate,
+                    ShipPostalCode=x.ShipPostalCode,
+                    ShipRegion=x.ShipRegion,
+                    ShipVia=x.ShipVia,
+                    Status=x.Status
+                }).ToList();
+
+            }
         }
 
         [HttpGet]
-        public List<Orders> CustomerGetOrder(string Id)
+        public List<OrderModel> CustomerGetOrder(string Id)
         {
-            List<Orders> orders = repo.List(x=>x.CustomerID==Id);
-            return orders;
+         
+            using (DataContext db = new DataContext())
+            {
+                List<OrderModel> orderModels = db.Orders.Where(x=>x.CustomerID==Id).Select(x => new OrderModel
+                {
+                    CustomerID = x.CustomerID,
+                    EmployeeID = x.EmployeeID,
+                    Freight = x.Freight,
+                    OrderDate = x.OrderDate,
+                    OrderID = x.OrderID,
+                    RequiredDate = x.RequiredDate,
+                    ShipAddress = x.ShipAddress,
+                    ShipCity = x.ShipCity,
+                    ShipCountry = x.ShipCountry,
+                    ShipName = x.ShipName,
+                    ShippedDate = x.ShippedDate,
+                    ShipPostalCode = x.ShipPostalCode,
+                    ShipRegion = x.ShipRegion,
+                    ShipVia = x.ShipVia,
+                    Status = x.Status,
+                    Customer=x.Customers.ContactName,
+                    Employee=x.Employees.FirstName
+                }).ToList();
+                return orderModels;
+            }
+           
         }
     }
 }

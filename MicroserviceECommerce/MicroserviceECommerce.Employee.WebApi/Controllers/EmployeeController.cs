@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.Entities;
+﻿using MicroserviceECommerce.Employee.WebApi.Models;
+using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,30 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
         RepositoryPattern<Employees> repo = new RepositoryPattern<Employees>();
 
         [HttpGet]
-        public List<Employees> GetEmployees()
+        public List<EmployeeModel> GetEmployees()
         {
-            List<Employees> employees = repo.List();
-            return employees;
+            using (DataContext db=new DataContext())
+            {
+                return db.Employees.Select(x => new EmployeeModel
+                {
+                    Address=x.Address,
+                    BirthDate=x.BirthDate,
+                    City=x.City,
+                    Country=x.Country,
+                    EmployeeID=x.EmployeeID,
+                    FirstName=x.FirstName,
+                    HireDate=x.HireDate,
+                    HomePhone=x.HomePhone,
+                    LastName=x.LastName,
+                    Password=x.Password,
+                    PostalCode=x.PostalCode,
+                    Region=x.Region,
+                    Title=x.Title,
+                   TitleOfCourtesy=x.TitleOfCourtesy,
+                   
+                }).ToList();
+            }
+         
         }
 
         [HttpGet]

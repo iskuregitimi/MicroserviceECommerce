@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MicroserviceECommerce.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MicroserviceECommerce.MVCUI.Entities
+namespace MicroserviceECommerce.Employee.WebApi.Models
 {
-    public class Employees
+    public class EmployeeModel
     {
         public int EmployeeID { get; set; }
         public string Password { get; set; }

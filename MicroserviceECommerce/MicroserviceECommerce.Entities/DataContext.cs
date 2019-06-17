@@ -41,20 +41,20 @@ namespace MicroserviceECommerce.Entities
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
 
-            //modelBuilder.Entity<Employees>()
-            //    .HasMany(e => e.EmployeeRol)
-            //    .WithRequired(e => e.Employees)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Employees>()
+                .HasMany(e => e.EmployeeRol)
+                .WithRequired(e => e.Employees)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Employees>()
-            //    .HasMany(e => e.Employees1)
-            //    .WithOptional(e => e.Employees2)
-            //    .HasForeignKey(e => e.ReportsTo);
+            modelBuilder.Entity<Employees>()
+                .HasMany(e => e.Employees1)
+                .WithOptional(e => e.Employees2)
+                .HasForeignKey(e => e.ReportsTo);
 
-            //modelBuilder.Entity<Employees>()
-            //    .HasMany(e => e.Territories)
-            //    .WithMany(e => e.Employees)
-            //    .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
+            modelBuilder.Entity<Employees>()
+                .HasMany(e => e.Territories)
+                .WithMany(e => e.Employees)
+                .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
 
             modelBuilder.Entity<Order_Details>()
                 .Property(e => e.UnitPrice)
@@ -68,19 +68,19 @@ namespace MicroserviceECommerce.Entities
                 .Property(e => e.Freight)
                 .HasPrecision(19, 4);
 
-            //modelBuilder.Entity<Orders>()
-            //    .HasMany(e => e.Order_Details)
-            //    .WithRequired(e => e.Orders)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Orders>()
+                .HasMany(e => e.Order_Details)
+                .WithRequired(e => e.Orders)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Products>()
                 .Property(e => e.UnitPrice)
                 .HasPrecision(19, 4);
 
-            //modelBuilder.Entity<Products>()
-            //    .HasMany(e => e.Order_Details)
-            //    .WithRequired(e => e.Products)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Products>()
+                .HasMany(e => e.Order_Details)
+                .WithRequired(e => e.Products)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Region>()
                 .Property(e => e.RegionDescription)
@@ -96,10 +96,10 @@ namespace MicroserviceECommerce.Entities
                 .WithRequired(e => e.Rols)
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Shippers>()
-            //    .HasMany(e => e.Orders)
-            //    .WithOptional(e => e.Shippers)
-            //    .HasForeignKey(e => e.ShipVia);
+            modelBuilder.Entity<Shippers>()
+                .HasMany(e => e.Orders)
+                .WithOptional(e => e.Shippers)
+                .HasForeignKey(e => e.ShipVia);
 
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)

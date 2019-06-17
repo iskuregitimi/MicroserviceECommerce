@@ -143,7 +143,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HttpHelper.cs" />
+    <Compile Include="HttpHelper\CustomerHelper.cs" />
+    <Compile Include="HttpHelper\HttpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +187,8 @@
     <Content Include="Views\Employee\GetEmployees.cshtml" />
     <Content Include="Views\Order\GetOrderDetail.cshtml" />
     <Content Include="Views\Order\GetCustomerOrder.cshtml" />
+    <Content Include="Views\Customer\GetCustomer.cshtml" />
+    <Content Include="Views\Customer\EditCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

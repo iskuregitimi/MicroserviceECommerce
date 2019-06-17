@@ -11,7 +11,7 @@ namespace MicroserviceECommerce.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shippers()
         {
-            //Orders = new HashSet<Orders>();
+            Orders = new HashSet<Orders>();
         }
 
         [Key]
@@ -24,7 +24,7 @@ namespace MicroserviceECommerce.Entities
         [StringLength(24)]
         public string Phone { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }
