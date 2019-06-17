@@ -52,7 +52,7 @@
 
         <td>
             @Html.ActionLink("Düzenle", "Edit", new { /* id=item.PrimaryKey */ },new {@class="btn btn-danger"}) 
-            @Html.ActionLink("Detay", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-danger" }) 
+            @Html.ActionLink("Detay", "GetCustomerDetail", new { id=item.CustomerID}, new { @class = "btn btn-danger" }) 
             @Html.ActionLink("Sil", "CustomerDelete", new {  id=item.CustomerID }, new { @class = "btn btn-danger" })
         </td>
     </tr>

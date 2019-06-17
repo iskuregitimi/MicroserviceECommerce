@@ -20,9 +20,9 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 		}
 
 		[HttpGet]
-		public Customers GetCustomer(string id)
+		public Customers GetCustomer(string customerid)
 		{
-			Customers result = repo.Find(x => x.CustomerID == id);
+			Customers result = repo.Find(x => x.CustomerID == customerid);
 			return result;
 		}
 
