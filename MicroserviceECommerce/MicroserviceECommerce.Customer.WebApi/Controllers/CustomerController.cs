@@ -92,11 +92,16 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             using (DataContext db=new DataContext())
             {
                 Customers cust = repo.Find(x => x.CustomerID == Id);
-                List<Orders> customerorder = repo1.List(x => x.CustomerID == cust.CustomerID);
-                //List<Order_Details> order_Details = repo2.List(x => x.OrderID == customerorder.OrderID);
-
+                var customerorder = repo1.List(x => x.CustomerID == cust.CustomerID);
+              
                 foreach (var item in customerorder)
                 {
+                    var order_Details = repo2.List(x => x.OrderID == item.OrderID);
+                    foreach (var item1 in order_Details)
+                    {
+                        db.Order_Details.Remove(item1);
+                    }
+
                     db.Orders.Remove(item);
                 }
                 db.Customers.Remove(cust);
