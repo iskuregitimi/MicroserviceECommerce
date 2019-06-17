@@ -25,6 +25,8 @@
         </th>
         <th>
         </th>
+        <th>
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -44,6 +46,9 @@
             </td>
             <td>
                 <a class="btn btn-primary btn-sm" href="~/Products/GetProduct/@item.ProductID">Detail</a>
+            </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="@Url.Action("AddShopCart", "ShopCart", new { id = item.ProductID })">Buy</a>
             </td>
             @if ((string)Session["UserType"] == "Employee")
             {

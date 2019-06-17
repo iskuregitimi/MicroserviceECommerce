@@ -143,6 +143,7 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShippersController.cs" />
+    <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Filters\EmployeeFilter.cs" />
     <Compile Include="Filters\LoginFilter.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\CustomersModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\ItemonCartModel.cs" />
     <Compile Include="Models\OrderAddModel.cs" />
     <Compile Include="Models\OrderDetailsModel.cs" />
     <Compile Include="Models\OrdersModel.cs" />
@@ -214,6 +216,7 @@
     <Content Include="Views\Logins\EmployeeLogin.cshtml" />
     <Content Include="Views\Logins\LoginHata.cshtml" />
     <Content Include="Views\OrderDetails\GetOrderDetails.cshtml" />
+    <Content Include="Views\ShopCart\CartView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

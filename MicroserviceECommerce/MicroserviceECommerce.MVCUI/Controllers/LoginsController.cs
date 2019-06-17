@@ -55,6 +55,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         {
             Session.Remove("Login");
             Session.Remove("UserType");
+            Session.Remove("Cart");
             return RedirectToAction("Index", "Home");
         }
 

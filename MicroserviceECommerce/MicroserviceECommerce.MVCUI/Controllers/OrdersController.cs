@@ -19,9 +19,11 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             return View(orders);
         }
         [EmployeeFilter]
-        public ActionResult PutOrders(OrderAddModel orders)
+        public ActionResult PutOrders(List<ItemonCartModel> cart, string id)
         {
-            HTTPHelpers.PostMethod("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, orders);
+            var customer = (CustomersModel)Session["Login"];
+            id = customer.CustomerID;
+            HTTPHelpers.PostMethodMultiple("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, cart, id);
             return RedirectToAction("GetOrders");
         }
         [LoginFilter]
