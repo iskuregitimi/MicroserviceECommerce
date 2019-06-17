@@ -10,6 +10,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 {
     public class CustomerLoginController : Controller
     {
+        // GET: CustomerLogin
         public ActionResult CustomerLogin()
         {
             return View();
@@ -20,10 +21,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         public ActionResult CustomerLogin(string customerID, string password)
         {
             var customer = HttpHelper.GetMethod<CustomerModel_>("http://localhost:37776", "Login/GetCustomer", RestSharp.Method.GET, customerID, password);
-            if (customer.Password==password)
+            if (customer.Password == password)
             {
                 Session["Login"] = customer;
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("LoginHata");
         }
@@ -35,7 +36,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         public ActionResult Logout()
         {
             Session.Remove("Login");
-          return  RedirectToAction("CustomerLogin");
+            return RedirectToAction("CustomerLogin");
         }
     }
 }

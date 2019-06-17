@@ -35,8 +35,13 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
         //add customer
         public void AddCustomer(Customers _customer)
         {
-            db.Customers.Add(_customer);
-            db.SaveChanges();
+            _customer.CustomerID.ToUpper();
+            if (_customer.CustomerID.Length<=5)
+            {
+                db.Customers.Add(_customer);
+                db.SaveChanges();
+            }
+           
         }
         //update customer
         public void UpdateCustomer(Customers _customer)
@@ -62,6 +67,26 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             Customers customer = db.Customers.FirstOrDefault(x => x.CustomerID == id);
             db.Customers.Remove(customer);
             db.SaveChanges();
+        }
+        [HttpGet]
+        public CustomerModel CustomerDetail(string id)
+        {
+            var customer = db.Customers.Where(x=>x.CustomerID==id).Select(y => new CustomerModel
+            {
+                CustomerID = y.CustomerID,
+                CompanyName = y.CompanyName,
+                ContactName = y.ContactName,
+                ContactTitle = y.ContactTitle,
+                Address = y.Address,
+                City = y.City,
+                Region = y.Region,
+                PostalCode = y.PostalCode,
+                Country = y.Country,
+                Phone = y.Phone,
+                Fax = y.Fax,
+                Password = y.Password
+            }).FirstOrDefault();
+            return customer;
         }
     }
 }
