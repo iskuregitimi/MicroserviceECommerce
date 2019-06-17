@@ -27,6 +27,11 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         [LoginFilter]
         public ActionResult GetCutomerOrder(string id)
         {
+            if ((string)Session["UserType"] == "Customer")
+            {
+                var c = (CustomersModel)Session["Login"];
+                id = c.CustomerID;
+            }
             var order = HTTPHelpers.GetMethod<List<OrdersModel>>("http://localhost:37776/", "Orders/GetCustomerOrders", RestSharp.Method.GET, id);
             return View(order);
         }

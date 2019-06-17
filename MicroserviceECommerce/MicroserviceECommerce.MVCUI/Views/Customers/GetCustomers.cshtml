@@ -57,53 +57,56 @@
     </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.CustomerID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Password)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CompanyName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ContactName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ContactTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.City)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Region)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PostalCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Country)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Fax)
-    </td>
-    <td>
-        <a class="btn btn-primary btn-sm" href="~/Customers/GetCustomer/@item.CustomerID">Detail</a>
-    </td>
-    <td>
-        <a class="btn btn-success btn-sm" href="~/Customers/UpdateCustomer/@item.CustomerID">Update</a>
-    </td>
-    <td>
-        <a class="btn btn-warning btn-sm" href="~/Customers/DeleteCustomer/@item.CustomerID">Delete</a>
-    </td>
-</tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            <a class="btn btn-primary btn-sm" href="~/Customers/GetCustomer/@item.CustomerID">Detail</a>
+        </td>
+        <td>
+            <a class="btn btn-success btn-sm" href="~/Customers/UpdateCustomer/@item.CustomerID">Update</a>
+        </td>
+        <td>
+            <a class="btn btn-warning btn-sm" href="~/Customers/DeleteCustomer/@item.CustomerID">Delete</a>
+        </td>
+        <td>
+            <a class="btn bg-info btn-sm" href="~/Orders/GetCutomerOrder/@item.CustomerID">Orders</a>
+        </td>
+    </tr>
 }
 
 </table>

@@ -10,7 +10,11 @@
         {
             <a href="~/Products/GetProductsByCategory/@item.CategoryID" class="btn btn-primary">@item.CategoryName</a>
         }
-        <a class="btn btn-primary" href="~/Products/ProductsAdd">New Product</a>
+        @if ((string)Session["UserType"]=="Employee")
+        {
+            <a class="btn btn-primary" href="~/Products/ProductsAdd">New Product</a>
+        }
+        
     </div>
 </div>
 
