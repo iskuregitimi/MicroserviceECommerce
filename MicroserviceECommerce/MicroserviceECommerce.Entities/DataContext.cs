@@ -87,10 +87,10 @@
                 .Property(e => e.Freight)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<Orders>()
-                .HasMany(e => e.Order_Details)
-                .WithRequired(e => e.Orders)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Orders>()
+            //    .HasMany(e => e.Order_Details)
+            //    .WithRequired(e => e.Orders)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Products>()
                 .Property(e => e.UnitPrice)
@@ -110,10 +110,10 @@
                 .WithRequired(e => e.Region)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Shippers>()
-                .HasMany(e => e.Orders)
-                .WithOptional(e => e.Shippers)
-                .HasForeignKey(e => e.ShipVia);
+            //modelBuilder.Entity<Shippers>()
+            //    .HasMany(e => e.Orders)
+            //    .WithOptional(e => e.Shippers)
+            //    .HasForeignKey(e => e.ShipVia);
 
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)

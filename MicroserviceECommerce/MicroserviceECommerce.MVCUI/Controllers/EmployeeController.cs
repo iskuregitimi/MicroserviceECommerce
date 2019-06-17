@@ -14,9 +14,22 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            List<EmployeeModell> employees = new List<EmployeeModell>();
-            employees = HttpHelper.SendRequest<List<EmployeeModell>>("http://localhost:37786/", "Employee/GetEmployees", Method.GET);
+            List<EmployeeModell> employees = HttpHelper.SendRequest<List<EmployeeModell>>("http://localhost:37786/", "Employee/GetEmployees", Method.GET);
+         
             return View(employees);
+        }
+
+        public ActionResult InsertEmployee()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertEmployee(EmployeeModell model)
+        {
+
+            HttpHelper.AddRequestParam<EmployeeModell>("http://localhost:37786/", "Employee/InsertEmployee", model,Method.POST);
+            return View();
         }
     }
 }
