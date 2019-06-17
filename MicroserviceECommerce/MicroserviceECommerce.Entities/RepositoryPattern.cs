@@ -41,7 +41,7 @@ namespace MicroserviceECommerce.Entities
 		}
 
 
-		// buraya simdi db.Customers verilerine DTO ya dolduran kodumu yazıyorum ok 
+	
 
 		//public List<customerDTO> ListCustomers()
 

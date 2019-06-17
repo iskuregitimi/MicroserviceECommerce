@@ -17,8 +17,6 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 		{
 			List<Customers> customer = repo.List();
 			  return customer;
-
-
 		}
 
 		[HttpGet]
@@ -35,7 +33,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 			repo.Add(customer);
 		}
 
-		[HttpDelete]
+		[HttpGet]
 		public void DeleteCustomer(string customerid)
 		{
 
