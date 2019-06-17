@@ -35,8 +35,8 @@
                     else if ((string)Session["UserType"] == "Customer")
                     {
                         <li>@Html.ActionLink("My Orders", "GetCutomerOrder", "Orders")</li>
-                        <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
                         <li>@Html.ActionLink("Cart", "CartView", "ShopCart")</li>
+                        <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
                     }
 
                 </ul>

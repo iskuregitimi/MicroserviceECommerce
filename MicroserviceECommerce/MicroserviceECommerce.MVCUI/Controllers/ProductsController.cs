@@ -12,11 +12,13 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     public class ProductsController : Controller
     {
         // GET: Products
+        [OutputCache(Duration = 120)]
         public ActionResult GetProducts()
         {
             var products = HTTPHelpers.GetListMethod<List<ProductsModel>>("http://localhost:37796/", "Products/GetProducts", RestSharp.Method.GET);
             return View(products);
         }
+        [OutputCache(Duration = 120)]
         public ActionResult GetProductsByCategory(int id)
         {
             var products = HTTPHelpers.GetMethod<List<ProductsModel>>("http://localhost:37796/", "Products/GetProductsByCategoryID", RestSharp.Method.GET, id);

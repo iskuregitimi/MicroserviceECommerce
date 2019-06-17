@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.MVCUI.HTTPHelperMethpds;
+﻿using MicroserviceECommerce.MVCUI.Filters;
+using MicroserviceECommerce.MVCUI.HTTPHelperMethpds;
 using MicroserviceECommerce.MVCUI.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     public class ShopCartController : Controller
     {
         // GET: ShopCart
+        [LoginFilter]
         public ActionResult CartView()
         {
             return View();
         }
+        [LoginFilter]
         [HttpGet]
         public ActionResult AddShopCart(int id)
         {
@@ -28,10 +31,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             else
             {
                 List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
-                int productid = ProductExist(id);
-                if (productid != 0)
+                int index = cart.FindIndex(a => a.Product.ProductID == id);
+                if (index != -1)
                 {
-                    cart[productid].Quantity++;
+                    cart[index].Quantity++;
                 }
                 else
                 {
@@ -41,26 +44,26 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             }
             return RedirectToAction("CartView");
         }
-
+        [LoginFilter]
         public ActionResult DeleteShopCart(int id)
         {
             List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
-            int productid = ProductExist(id);
-            cart.RemoveAt(productid);
+            int index = cart.FindIndex(a => a.Product.ProductID == id);
+            cart.RemoveAt(index);
             Session["Cart"] = cart;
             return RedirectToAction("CartView");
         }
 
-        private int ProductExist(int id)
-        {
-            List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
-            foreach (var item in cart)
-            {
-                if (item.Product.ProductID == id)
-                    return item.Product.ProductID;
-            }
-            return 0;
+        //private int ProductExist(int id)
+        //{
+        //    List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
+        //    foreach (var item in cart)
+        //    {
+        //        if (item.Product.ProductID == id)
+        //            return item.Product.ProductID;
+        //    }
+        //    return 0;
 
-        }
+        //}
     }
 }

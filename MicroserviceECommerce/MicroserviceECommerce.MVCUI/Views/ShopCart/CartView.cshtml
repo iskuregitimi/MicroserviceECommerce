@@ -20,13 +20,13 @@
     {
         <tr>
             <td>@item.Product.ProductID</td>
-            <td>@item.Product.ProductID</td>
-            <td>@item.Product.CategoryID.ToString()</td>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Product.CategoryID</td>
             <td>@item.Product.UnitPrice</td>
             <td>@item.Quantity</td>
             <td>@(item.Product.UnitPrice * item.Quantity)</td>
             <td>
-                <a class="btn btn-warning btn-sm" href="~/ShopCart/DeleteShopCart/@item.Product.ProductID">Remove</a>
+                <a class="btn btn-success btn-sm" href="@Url.Action("DeleteShopCart", "ShopCart", new { id = item.Product.ProductID })">Remove</a>
             </td>
         </tr>
     }

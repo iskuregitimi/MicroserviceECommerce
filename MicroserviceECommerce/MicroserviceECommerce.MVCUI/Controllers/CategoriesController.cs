@@ -11,6 +11,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     public class CategoriesController : Controller
     {
         // GET: Categories
+        [OutputCache(Duration = 120)]
         public ActionResult GetCategories()
         {
             var categories = HTTPHelpers.GetListMethod<List<CategoriesModel>>("http://localhost:37796/", "Categories/GetCategories", RestSharp.Method.GET);

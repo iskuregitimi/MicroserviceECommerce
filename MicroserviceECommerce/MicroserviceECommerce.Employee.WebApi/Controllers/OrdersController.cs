@@ -37,8 +37,8 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
         public void DeleteOrder(int id)
         {
             var order = db.Orders.FirstOrDefault(x => x.OrderID == id);
-            var od = db.Order_Details.FirstOrDefault(x => x.OrderID == id);
-            db.Order_Details.Remove(od);
+            var od = db.Order_Details.Where(x => x.OrderID == id).ToList();
+            db.Order_Details.RemoveRange(od);
             db.Orders.Remove(order);
             db.SaveChanges();
         }

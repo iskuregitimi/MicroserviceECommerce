@@ -13,18 +13,21 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     {
         // GET: Orders
         [EmployeeFilter]
+        [OutputCache(Duration = 30)]
         public ActionResult GetOrders()
         {
             var orders = HTTPHelpers.GetListMethod<List<OrdersModel>>("http://localhost:37786/", "Orders/GetOrders", RestSharp.Method.GET);
             return View(orders);
         }
-        [EmployeeFilter]
-        public ActionResult PutOrders(List<ItemonCartModel> cart, string id)
+        [LoginFilter]
+        public ActionResult PutOrders()
         {
             var customer = (CustomersModel)Session["Login"];
-            id = customer.CustomerID;
+            var cart = (List<ItemonCartModel>)Session["Cart"];
+            var id = customer.CustomerID;
             HTTPHelpers.PostMethodMultiple("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, cart, id);
-            return RedirectToAction("GetOrders");
+            Session.Remove("Cart");
+            return RedirectToRoute(new { controller = "Orders", action = "GetCutomerOrder" });
         }
         [LoginFilter]
         public ActionResult GetCutomerOrder(string id)

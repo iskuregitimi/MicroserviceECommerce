@@ -13,6 +13,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     {
         // GET: Customers
         [EmployeeFilter]
+        [OutputCache(Duration = 60)]
         public ActionResult GetCustomers()
         {
             var customers = HTTPHelpers.GetListMethod<List<CustomersModel>>("http://localhost:37786/", "Customers/GetCustomers", RestSharp.Method.GET);
