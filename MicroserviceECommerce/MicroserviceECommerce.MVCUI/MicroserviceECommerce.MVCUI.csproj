@@ -213,10 +213,10 @@
     <Content Include="Views\Logins\CustomerLogin.cshtml" />
     <Content Include="Views\Logins\EmployeeLogin.cshtml" />
     <Content Include="Views\Logins\LoginHata.cshtml" />
+    <Content Include="Views\OrderDetails\GetOrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\OrderDetails\" />
     <Folder Include="Views\Shippers\" />
     <Folder Include="Views\Suppliers\" />
   </ItemGroup>

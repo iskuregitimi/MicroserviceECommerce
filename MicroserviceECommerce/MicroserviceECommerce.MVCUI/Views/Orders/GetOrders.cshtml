@@ -54,10 +54,6 @@
         <th>
             Delete
         </th>
-        <th>
-            Orders
-        </th>
-        
     </tr>
 
 @foreach (var item in Model) {
@@ -99,7 +95,7 @@
         @Html.DisplayFor(modelItem => item.Status)
     </td>
     <td>
-        <a class="btn btn-primary btn-sm" href="~/Orders/GetOrder/@item.OrderID">Detail</a>
+        <a class="btn btn-primary btn-sm" href="~/OrderDetails/GetOrderDetails/@item.OrderID">Detail</a>
     </td>
     <td>
         <a class="btn btn-success btn-sm" href="~/Orders/UpdateOrder/@item.OrderID">Update</a>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MicroserviceECommerce.MVCUI.HTTPHelperMethpds;
+using MicroserviceECommerce.MVCUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +11,10 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     public class OrderDetailsController : Controller
     {
         // GET: OrderDetails
-        public ActionResult Index()
+        public ActionResult GetOrderDetails(int id)
         {
-            return View();
+            var orderdetail = HTTPHelpers.GetMethod<List<OrderDetailsModel>>("http://localhost:37776/", "OrderDetails/GetOrderDetails", RestSharp.Method.GET, id);
+            return View(orderdetail);
         }
     }
 }
