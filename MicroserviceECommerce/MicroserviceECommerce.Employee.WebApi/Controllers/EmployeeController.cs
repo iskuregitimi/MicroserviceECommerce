@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.Employee.WebApi.Models;
+﻿
+using MicroserviceECommerce.Employee.WebApi.Models;
 using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
     {
 		RepositoryPattern<Employees> repo = new RepositoryPattern<Employees>();
 
-
+		[HttpGet]
 		 public List<ModelEmployee> GetEmployeeList()
 		{
 			List<Employees> employeelist = repo.List();
@@ -22,21 +23,17 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
 			{
 				ModelEmployee modelemployee = new ModelEmployee
 				{
-					EmployeeID = employee.EmployeeID,
-					BirthDate = employee.BirthDate,
+					EmployeeID = employee.EmployeeID,			
 					Extension = employee.Extension,
 					Address = employee.Address,
 					City = employee.City,
-					FirstName = employee.FirstName,
-					HireDate = employee.HireDate,
-					Notes = employee.Notes,
-					Photo = employee.Photo,
+					FirstName = employee.FirstName,			
 					HomePhone = employee.HomePhone,
 					Region = employee.Region,
 					PostalCode = employee.PostalCode,
 					Country = employee.Country,
 					LastName = employee.LastName,
-					PhotoPath = employee.PhotoPath,
+				
 					Title = employee.Title,
 					TitleOfCourtesy = employee.TitleOfCourtesy,
 					ReportsTo = employee.ReportsTo
@@ -48,38 +45,53 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
 		}
 
 
-		public List<ModelEmployee> GetEmployee(int id)
+		public ModelEmployee GetEmployee(int id)
 		{
-			Employees employeelist = repo.Find(x=>x.);
-			ModelEmployee modelemployeelist = new ModelEmployee();
-			foreach (var employee in employeelist)
+			Employees employee = repo.Find(x=>x.EmployeeID==id);
+			ModelEmployee modelemployee = new ModelEmployee
 			{
-				ModelEmployee modelemployee = new ModelEmployee
-				{
-					EmployeeID = employee.EmployeeID,
-					BirthDate = employee.BirthDate,
-					Extension = employee.Extension,
-					Address = employee.Address,
-					City = employee.City,
-					FirstName = employee.FirstName,
-					HireDate = employee.HireDate,
-					Notes = employee.Notes,
-					Photo = employee.Photo,
-					HomePhone = employee.HomePhone,
-					Region = employee.Region,
-					PostalCode = employee.PostalCode,
-					Country = employee.Country,
-					LastName = employee.LastName,
-					PhotoPath = employee.PhotoPath,
-					Title = employee.Title,
-					TitleOfCourtesy = employee.TitleOfCourtesy,
-					ReportsTo = employee.ReportsTo
+				EmployeeID = employee.EmployeeID,
+				
+				Extension = employee.Extension,
+				Address = employee.Address,
+				City = employee.City,
+				FirstName = employee.FirstName,
+				
+				HomePhone = employee.HomePhone,
+				Region = employee.Region,
+				PostalCode = employee.PostalCode,
+				Country = employee.Country,
+				LastName = employee.LastName,
+			
+				Title = employee.Title,
+				TitleOfCourtesy = employee.TitleOfCourtesy,
+				ReportsTo = employee.ReportsTo
 
-				};
-				modelemployeelist.Add(modelemployee);
-			}
-			return modelemployeelist;
+			};
+			return modelemployee;
 		}
+
+
+
+		//[HttpPost]
+		//public int Update(Entities.Customer _newCustomer)
+		//{
+		//	Entities.Customer oldCustomer = data.Customers.FirstOrDefault(x => x.CustomerID == _newCustomer.CustomerID);
+
+		//	oldCustomer.CompanyName = _newCustomer.CompanyName;
+		//	oldCustomer.ContactName = _newCustomer.ContactName;
+		//	oldCustomer.ContactTitle = _newCustomer.ContactTitle;
+		//	oldCustomer.Country = _newCustomer.Country;
+		//	oldCustomer.Address = _newCustomer.Address;
+		//	oldCustomer.City = _newCustomer.City;
+		//	oldCustomer.PostalCode = _newCustomer.PostalCode;
+		//	oldCustomer.Phone = _newCustomer.Phone;
+		//	oldCustomer.Fax = _newCustomer.Fax;
+		//	oldCustomer.Region = _newCustomer.Region;
+		//	oldCustomer.Password = _newCustomer.Password;
+		//	int result = data.SaveChanges();
+		//	return result;
+		//}
 
 
 	}
@@ -89,31 +101,5 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
 
 
 
-	//public List<ModelCustomer> GetAll()
-	//{
-	//	List<Entities.Customer> customerListinData = data.Customers.ToList();
-	//	List<ModelCustomer> modelCustomerList = new List<ModelCustomer>();
-
-	//	foreach (var customer in customerListinData)
-	//	{
-	//		ModelCustomer modelCustomer = new ModelCustomer
-	//		{
-	//			CustomerID = customer.CustomerID,
-	//			ContactName = customer.ContactName,
-	//			ContactTitle = customer.ContactTitle,
-	//			CompanyName = customer.CompanyName,
-	//			Country = customer.Country,
-	//			Address = customer.Address,
-	//			City = customer.City,
-	//			PostalCode = customer.PostalCode,
-	//			Phone = customer.Phone,
-	//			Fax = customer.Fax,
-	//			Region = customer.Region,
-	//			Password = customer.Password
-	//		};
-	//		modelCustomerList.Add(modelCustomer);
-	//	}
-	//	return modelCustomerList;
-	//}
-
+	
 }

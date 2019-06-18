@@ -25,6 +25,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 			customers = HttpHelpers.SendRequestid<Customers>("http://localhost:37776", "api/Customer/DeleteCustomer", Method.GET,id);
 			return RedirectToAction("CustomerList");
 		}
+
 		[HttpGet]
 		public ActionResult AddCustomer()
 		{
@@ -50,5 +51,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 			customers = HttpHelpers.SendRequestid<Customers>("http://localhost:37776", "api/Customer/GetCustomer", Method.GET, id);
 			return View(customers);
 		}
+		 
+		
+	
+
 	}
 }
