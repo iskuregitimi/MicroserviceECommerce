@@ -67,5 +67,17 @@ namespace MicroserviceECommerce.MVCUI.HttpHelpers
             request.AddParameter("Id", Id);
             client.Execute(request);
         }
+        public static T Login<T>(string host, string resource, Method httpMethod, string Id,string Password)
+                  where T : new()
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource, httpMethod);
+            request.AddParameter("Id", Id);
+            request.AddParameter("Password", Password);
+
+            var response = client.Execute<T>(request);
+            return response.Data;
+        }
+
     }
 }
