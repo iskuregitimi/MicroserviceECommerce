@@ -12,7 +12,6 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Employee
 
         public ActionResult GetAll()
         {
@@ -31,7 +30,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         {
             return View();
         }
-        [HttpPost]
+       [HttpPost]
         public ActionResult Add(Employee employee)
         {
             HttpHelperMethods.Add<Employee>("http://localhost:37786/", "api/Employee/PostAdd", Method.POST, employee);
@@ -43,7 +42,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             Employee employee = HttpHelperMethods.GetWithId<Employee>("http://localhost:37786/", "api/Employee/GetWithId", Method.GET, Id);
             return View(employee);
         }
-
+        
         public ActionResult Edit(Employee employee)
         {
             HttpHelperMethods.Edit<Employee>("http://localhost:37786", "api/Employee/Update", Method.POST, employee);
