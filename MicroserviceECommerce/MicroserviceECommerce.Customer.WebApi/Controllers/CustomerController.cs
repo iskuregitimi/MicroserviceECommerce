@@ -40,6 +40,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 			var customer = repo.Find(x => x.CustomerID == customerid);
 			repo.Delete(customer);
 		}
+
 		[HttpPost]
 		public void Login(string customerid)
 		{
