@@ -45,6 +45,20 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
         public void DeleteCustomer(string id)
         {
             Customers customer = CustomerManager.GetCustomer(id);
+            List<Orders> orders = CustomerManager.GetOrder(customer);
+
+            foreach (var item in orders)
+            {
+                List<Order_Details> orderDetails = CustomerManager.GetOrderDetail(item);
+
+                foreach (var item2 in orderDetails)
+                {
+                    CustomerManager.DeleteOrderDetail(item2);
+                }
+
+                CustomerManager.DeleteOrder(item);
+            }
+           
             CustomerManager.DeleteCustomer(customer);
         }
     }

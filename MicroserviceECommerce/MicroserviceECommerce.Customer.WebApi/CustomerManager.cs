@@ -9,6 +9,9 @@ namespace MicroserviceECommerce.Customer.WebApi
     public static class CustomerManager
     {
         static Repository<Customers> repo = new Repository<Customers>();
+        static Repository<Orders> orderRepo = new Repository<Orders>();
+        static Repository<Order_Details> orderDetailRepo = new Repository<Order_Details>();
+
         public static List<CustomerModel> GetCustomers()
         {
             List<CustomerModel> customers = repo.List().Select(x => new CustomerModel()
@@ -37,6 +40,18 @@ namespace MicroserviceECommerce.Customer.WebApi
             return customer;
         }
 
+        public static List<Orders> GetOrder(Customers customer)
+        {
+            List<Orders> order = orderRepo.List().Where(x => x.CustomerID == customer.CustomerID).ToList();
+            return order;
+        }
+
+        public static List<Order_Details> GetOrderDetail(Orders order)
+        {
+            List<Order_Details> orderDetail = orderDetailRepo.List().Where(x => x.OrderID == order.OrderID).ToList();
+            return orderDetail;
+        }
+
         public static void UpdateCustomer(Customers cust)
         {
             repo.Update(cust);
@@ -45,6 +60,16 @@ namespace MicroserviceECommerce.Customer.WebApi
         public static void DeleteCustomer(Customers cust)
         {
             repo.Delete(cust);
+        }
+
+        public static void DeleteOrder(Orders order)
+        {
+            orderRepo.Delete(order);
+        }
+
+        public static void DeleteOrderDetail(Order_Details orderDetail)
+        {
+            orderDetailRepo.Delete(orderDetail);
         }
 
         public static void AddCustomer(Customers cust)
