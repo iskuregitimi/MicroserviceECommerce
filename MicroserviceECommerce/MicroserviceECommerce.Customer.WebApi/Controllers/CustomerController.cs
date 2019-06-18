@@ -42,9 +42,9 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 		}
 
 		[HttpGet]
-		public void Login(string customerid,string password)
+		public void Login(string customerid)
 		{
-			repo.Find(x => x.CustomerID == customerid && x.Password==password);
+			repo.Find(x => x.CustomerID ==customerid);
 		}
 
 	}
