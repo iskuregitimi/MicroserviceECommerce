@@ -55,6 +55,7 @@
     <Compile Include="Customers.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Employees.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Order_Details.cs" />
     <Compile Include="Products.cs" />
