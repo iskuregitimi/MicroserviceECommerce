@@ -13,10 +13,23 @@ namespace MicroserviceECommerce.MVCUI.HttpHelpers
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, httpMethod);
+
+            //string token = Guid.NewGuid().ToString();
+            //request.AddHeader("C-Token", token);
+
             var response = client.Execute<T>(request);
             return response.Data;
         }
         public static T GetWithId<T>(string host, string resource, Method httpMethod, string Id)
+                  where T : new()
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource, httpMethod);
+            request.AddParameter("Id", Id);
+            var response = client.Execute<T>(request);
+            return response.Data;
+        }
+        public static T GetWithId<T>(string host, string resource, Method httpMethod, int Id)
                   where T : new()
         {
             var client = new RestClient(host);
@@ -41,6 +54,13 @@ namespace MicroserviceECommerce.MVCUI.HttpHelpers
             client.Execute(request);
         }
         public static void Delete<T>(string host, string resource, Method Httpmethod, string Id)
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource, Httpmethod);
+            request.AddParameter("Id", Id);
+            client.Execute(request);
+        }
+        public static void Delete<T>(string host, string resource, Method Httpmethod, int Id)
         {
             var client = new RestClient(host);
             var request = new RestRequest(resource, Httpmethod);

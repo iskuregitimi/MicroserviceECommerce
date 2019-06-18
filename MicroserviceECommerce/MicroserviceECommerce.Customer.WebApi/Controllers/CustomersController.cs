@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace MicroserviceECommerce.Customer.WebApi.Controllers
@@ -37,6 +38,9 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                 };
                 modelCustomerList.Add(modelCustomer);
             }
+
+            //HttpContext.Current.Response.Headers.Add("C-Token", "Deneme values");
+
             return modelCustomerList;
         }
         public ModelCustomer GetWithId(string Id)
