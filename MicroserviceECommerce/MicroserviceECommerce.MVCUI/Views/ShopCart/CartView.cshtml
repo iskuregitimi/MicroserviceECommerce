@@ -23,12 +23,12 @@
                 <td>@item.Product.CategoryID</td>
                 <td>@item.Product.UnitPrice</td>
                 <td>
-                    @using (Html.BeginForm("UpdateShopCart","ShopCart"))
+                    @using (Html.BeginForm("UpdateShopCart", "ShopCart"))
                     {
                         <div class="input-group">
-                            @Html.TextBoxFor(x => item.Quantity, new { @class = "form-control", type = "number", min = 1, max = item.Product.UnitsInStock, @name = "quantity", style="width:70px" })
-                            @Html.HiddenFor(x => item.Product.ProductID, new { @name="id"})
-                            <input type="submit" value="Update" class="btn btn-success"/>
+                            @Html.TextBox("quantity", $"{ item.Quantity}", new { @class = "form-control", type = "number", min = 1, max = item.Product.UnitsInStock, style = "width:70px" })
+                            @Html.Hidden("id",  $"{ item.Product.ProductID}")
+                            <input type="submit" value="Update" class="btn btn-success" />
                         </div>
                     }
                 </td>
