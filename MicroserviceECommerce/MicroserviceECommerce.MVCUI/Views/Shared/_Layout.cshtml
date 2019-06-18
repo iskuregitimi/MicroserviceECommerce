@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using MicroserviceECommerce.MVCUI.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -35,8 +36,16 @@
                     else if ((string)Session["UserType"] == "Customer")
                     {
                         <li>@Html.ActionLink("My Orders", "GetCutomerOrder", "Orders")</li>
-                        <li>@Html.ActionLink("Cart", "CartView", "ShopCart")</li>
-                        <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
+                        var cart = (List<ItemonCartModel>)Session["Cart"];
+                        if (cart == null)
+                        {
+                            <li>@Html.ActionLink("Cart(0)", "CartView", "ShopCart")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink($"Cart({ cart.Count.ToString()})", "CartView", "ShopCart")</li>
+                            <li>@Html.ActionLink("Log Out", "LogOut", "Logins")</li>
+                        }
                     }
 
                 </ul>

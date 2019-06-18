@@ -24,14 +24,7 @@ namespace MicroserviceECommerce.MVCUI.HTTPHelperMethpds
             request.AddJsonBody(obj);
             client.Execute(request);
         }
-        public static void PostMethodMultiple(string host, string resource, Method Httpmethod, object obj, object id)
-        {
-            var client = new RestClient(host);
-            var request = new RestRequest(resource, Httpmethod);
-            request.AddParameter("id", id);
-            request.AddJsonBody(obj);
-            client.Execute(request);
-        }
+        
 
         public static T GetMethod<T>(string host, string resource, Method HttpMethod, object id)
            where T : new()

@@ -20,6 +20,9 @@
             @Html.DisplayNameFor(model => model.Discontinued)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
         </th>
         <th>
         </th>
@@ -45,14 +48,23 @@
                 @Html.DisplayFor(modelItem => item.Discontinued)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
                 <a class="btn btn-primary btn-sm" href="~/Products/GetProduct/@item.ProductID">Detail</a>
             </td>
-            @if ((string)Session["UserType"] == "Customer")
-            {
-                <td>
+            <td>
+                @if (((string)Session["UserType"] == "Customer") && (item.UnitsInStock.Value > 0))
+                {
+
                     <a class="btn btn-success btn-sm" href="@Url.Action("AddShopCart", "ShopCart", new { id = item.ProductID })">Buy</a>
-                </td>
-            }
+
+                }
+                else
+                {
+                    <a class="btn btn-danger btn-sm">Out of Stock</a>
+                }
+            </td>
             @if ((string)Session["UserType"] == "Employee")
             {
                 <td>

@@ -22,10 +22,8 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         [LoginFilter]
         public ActionResult PutOrders()
         {
-            var customer = (CustomersModel)Session["Login"];
             var cart = (List<ItemonCartModel>)Session["Cart"];
-            var id = customer.CustomerID;
-            HTTPHelpers.PostMethodMultiple("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, cart, id);
+            HTTPHelpers.PostMethod("http://localhost:37776/", "Orders/PutOrder", RestSharp.Method.PUT, cart);
             Session.Remove("Cart");
             return RedirectToRoute(new { controller = "Orders", action = "GetCutomerOrder" });
         }

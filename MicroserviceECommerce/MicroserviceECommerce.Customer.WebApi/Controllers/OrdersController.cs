@@ -69,7 +69,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             var Total = cart.Sum(x => x.Product.UnitPrice * x.Quantity);
             Orders order = new Orders
             {
-                CustomerID = id,
+                CustomerID = cart[0].CustomerID,
                 EmployeeID = 1,
                 OrderDate = DateTime.Now,
                 RequiredDate = DateTime.Now,
@@ -97,8 +97,12 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                     Discount = 0
                 };
                 odc.PutOrderDetails(od);
+                var product = db.Products.FirstOrDefault(x => x.ProductID == item.Product.ProductID);
+                product.UnitsInStock = (short)(product.UnitsInStock - item.Quantity);
+                db.SaveChanges();
+
             }
-            
+
         }
     }
 }

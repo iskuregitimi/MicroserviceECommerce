@@ -24,8 +24,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             ProductsModel product = new ProductsModel();
             if (Session["Cart"] == null)
             {
+                var cust = (CustomersModel)Session["Login"];
                 List<ItemonCartModel> cart = new List<ItemonCartModel>();
-                cart.Add(new ItemonCartModel { Product = HTTPHelpers.GetMethod<ProductsModel>("http://localhost:37796/", "Products/GetProductDetail", RestSharp.Method.GET, id), Quantity = 1 });
+                cart.Add(new ItemonCartModel { Product = HTTPHelpers.GetMethod<ProductsModel>("http://localhost:37796/", "Products/GetProductDetail", RestSharp.Method.GET, id), Quantity = 1, CustomerID = cust.CustomerID });
                 Session["Cart"] = cart;
             }
             else
@@ -42,7 +43,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
                 }
                 Session["Cart"] = cart;
             }
-            return RedirectToAction("CartView");
+            return RedirectToRoute(new { controller = "Products", action = "GetProducts" });
         }
         [LoginFilter]
         public ActionResult DeleteShopCart(int id)
@@ -53,17 +54,5 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             Session["Cart"] = cart;
             return RedirectToAction("CartView");
         }
-
-        //private int ProductExist(int id)
-        //{
-        //    List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
-        //    foreach (var item in cart)
-        //    {
-        //        if (item.Product.ProductID == id)
-        //            return item.Product.ProductID;
-        //    }
-        //    return 0;
-
-        //}
     }
 }
