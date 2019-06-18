@@ -25,19 +25,18 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
                     EmployeeID = employee.EmployeeID,
                     FirstName = employee.FirstName,
                     LastName = employee.LastName,
-                    BirthDate = employee.BirthDate,
+                    
                     Address = employee.Address,
                     City = employee.City,
                     Country = employee.Country,
                     PostalCode = employee.PostalCode,
                     Extension = employee.Extension,
-                    HireDate = employee.HireDate,
-                    HomePhone = employee.HomePhone,
-                    Notes = employee.Notes,
-                    Photo = employee.Photo,
+                    
+                   
+                   
                     PhotoPath = employee.PhotoPath,
                     Region = employee.Region,
-                    ReportsTo = employee.ReportsTo,
+                    
                     Title = employee.Title,
                     TitleOfCourtesy = employee.TitleOfCourtesy
                 };
@@ -53,19 +52,19 @@ namespace MicroserviceECommerce.Employee.WebApi.Controllers
                 EmployeeID = employee.EmployeeID,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                BirthDate = employee.BirthDate,
+                
                 Address = employee.Address,
                 City = employee.City,
                 Country = employee.Country,
                 PostalCode = employee.PostalCode,
                 Extension = employee.Extension,
-                HireDate = employee.HireDate,
+                
                 HomePhone = employee.HomePhone,
-                Notes = employee.Notes,
-                Photo = employee.Photo,
+                //Notes = employee.Notes,
+                
                 PhotoPath = employee.PhotoPath,
                 Region = employee.Region,
-                ReportsTo = employee.ReportsTo,
+                
                 Title = employee.Title,
                 TitleOfCourtesy = employee.TitleOfCourtesy
             };

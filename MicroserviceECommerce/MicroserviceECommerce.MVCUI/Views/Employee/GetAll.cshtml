@@ -7,7 +7,8 @@
 <h2>GetAll</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni Kişi ", "Add", "", new { type = "button", @class = "btn btn-primary" })
+
 </p>
 <table class="table">
     <tr>
@@ -51,10 +52,16 @@
             @Html.DisplayNameFor(model => model.Extension)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PhotoPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th></th>
     </tr>
@@ -101,16 +108,24 @@
             @Html.DisplayFor(modelItem => item.Extension)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Notes)
+            @Html.DisplayFor(modelItem => item.Photo)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.PhotoPath)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Password)
         </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.EmployeeID }, new { type = "button", @class = "btn btn-success" })
+
+        </td>
+        <td>
+            @Html.ActionLink("Detay", "GetWithId", new { id = item.EmployeeID }, new { type = "button", @class = "btn btn-info" })
+
+        </td>
+        <td> @Html.ActionLink("Sil", "Deleter", new { id = item.EmployeeID }, new { type = "button", @class = "btn btn-danger" })</td>
     </tr>
 }
 
