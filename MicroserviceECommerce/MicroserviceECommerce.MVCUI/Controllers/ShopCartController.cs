@@ -54,5 +54,14 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             Session["Cart"] = cart;
             return RedirectToAction("CartView");
         }
+
+        public ActionResult UpdateShopCart(FormCollection form)
+        {
+            List<ItemonCartModel> cart = (List<ItemonCartModel>)Session["Cart"];
+            int index = cart.FindIndex(a => a.Product.ProductID == Convert.ToInt32(form["id"]));
+            cart[index].Quantity= Convert.ToInt32(form["quantity"]);
+            Session["Cart"] = cart;
+            return RedirectToAction("CartView");
+        }
     }
 }

@@ -3,7 +3,6 @@
     ViewBag.Title = "CartView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <table class="table">
     <tr>
         <th>ProductID</th>
@@ -23,7 +22,16 @@
                 <td>@item.Product.ProductName</td>
                 <td>@item.Product.CategoryID</td>
                 <td>@item.Product.UnitPrice</td>
-                <td>@item.Quantity</td>
+                <td>
+                    @using (Html.BeginForm("UpdateShopCart","ShopCart"))
+                    {
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => item.Quantity, new { @class = "form-control", type = "number", min = 1, max = item.Product.UnitsInStock, @name = "quantity", style="width:70px" })
+                            @Html.HiddenFor(x => item.Product.ProductID, new { @name="id"})
+                            <input type="submit" value="Update" class="btn btn-success"/>
+                        </div>
+                    }
+                </td>
                 <td>@(item.Product.UnitPrice * item.Quantity)</td>
                 <td>
                     <a class="btn btn-warning btn-sm" href="@Url.Action("DeleteShopCart", "ShopCart", new { id = item.Product.ProductID })">Remove</a>
