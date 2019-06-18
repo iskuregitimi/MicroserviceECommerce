@@ -17,14 +17,10 @@ namespace MicroserviceECommerce.Employee.WebApi
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Routes.MapHttpRoute(
-              name: "YeniRoute",
-              routeTemplate: "{controller}/{action}/{id}",
-              defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-          );
+       
         }
     }
 }
