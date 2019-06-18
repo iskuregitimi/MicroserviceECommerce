@@ -47,5 +47,17 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
             }).FirstOrDefault();
             return product;
         }
+        public void AddProduct(Products product)
+        {
+            db.Products.Add(product);
+            db.SaveChanges();
+        }
+
+        public void UpdateProduct(Products product)
+        {
+            Products productz = db.Products.FirstOrDefault(x => x.ProductID == product.ProductID);
+            productz.ProductName = product.ProductName;
+            
+        }
     }
 }

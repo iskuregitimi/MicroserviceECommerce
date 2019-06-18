@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace MicroserviceECommerce.Customer.WebApi.Controllers
 {
-    public class CustomerCRUDController:ApiController
+    public class CustomerCRUDController : ApiController
     {
         DataContext db = new DataContext();
         //list all customers
@@ -35,13 +35,9 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
         //add customer
         public void AddCustomer(Customers _customer)
         {
-            _customer.CustomerID.ToUpper();
-            if (_customer.CustomerID.Length<=5)
-            {
-                db.Customers.Add(_customer);
-                db.SaveChanges();
-            }
-           
+            _customer.CustomerID = _customer.CustomerID.ToUpper();
+            db.Customers.Add(_customer);
+            db.SaveChanges();
         }
         //update customer
         public void UpdateCustomer(Customers _customer)
@@ -71,7 +67,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
         [HttpGet]
         public CustomerModel CustomerDetail(string id)
         {
-            var customer = db.Customers.Where(x=>x.CustomerID==id).Select(y => new CustomerModel
+            var customer = db.Customers.Where(x => x.CustomerID == id).Select(y => new CustomerModel
             {
                 CustomerID = y.CustomerID,
                 CompanyName = y.CompanyName,
