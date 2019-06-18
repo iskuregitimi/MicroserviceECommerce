@@ -20,10 +20,10 @@ namespace MicroserviceECommerce.Entities
         [Key]
         public int EmployeeID { get; set; }
 
-     
-
         [StringLength(20)]
         public string Password { get; set; }
+
+        public int? Rolü { get; set; }
 
         [Required]
         [StringLength(20)]

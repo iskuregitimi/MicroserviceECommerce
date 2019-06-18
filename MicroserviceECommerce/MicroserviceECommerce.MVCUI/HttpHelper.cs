@@ -16,6 +16,18 @@ namespace MicroserviceECommerce.MVCUI
 
             var response2 = client.Execute<T>(request);
 
+            var tokenHeader = response2.Headers.Where(x => x.Name == "TOKEN").FirstOrDefault();
+            if (tokenHeader!=null)
+            {
+                HttpContext.Current.Session["TOKEN"] = tokenHeader.Value;
+            }
+            //if (HttpContext.Current.Session["TOKEN"]!=null)
+            //{
+            //    request.AddHeader("TOKEN", HttpContext.Current.Session["TOKEN"].ToString());
+
+
+            //}
+           
             if (response2.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 throw response2.ErrorException;

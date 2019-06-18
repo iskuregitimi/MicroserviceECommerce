@@ -11,17 +11,17 @@ namespace MicroserviceECommerce.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Orders()
         {
-            //Order_Details = new HashSet<Order_Details>();
+            Order_Details = new HashSet<Order_Details>();
         }
 
         [Key]
         public int OrderID { get; set; }
 
-        [StringLength(20)]
-        public string Status { get; set; }
-
         [StringLength(5)]
         public string CustomerID { get; set; }
+
+        [StringLength(20)]
+        public string Status { get; set; }
 
         public int? EmployeeID { get; set; }
 
@@ -54,13 +54,13 @@ namespace MicroserviceECommerce.Entities
         [StringLength(15)]
         public string ShipCountry { get; set; }
 
-        //public virtual Customers Customers { get; set; }
+        public virtual Customers Customers { get; set; }
 
-        //public virtual Employees Employees { get; set; }
+        public virtual Employees Employees { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<Order_Details> Order_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Details> Order_Details { get; set; }
 
-        //public virtual Shippers Shippers { get; set; }
+        public virtual Shippers Shippers { get; set; }
     }
 }

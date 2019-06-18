@@ -11,7 +11,8 @@ namespace MicroserviceECommerce.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customers()
         {
-          
+            Orders = new HashSet<Orders>();
+            User_T = new HashSet<User_T>();
             CustomerDemographics = new HashSet<CustomerDemographics>();
         }
 
@@ -53,7 +54,11 @@ namespace MicroserviceECommerce.Entities
         [StringLength(24)]
         public string Fax { get; set; }
 
-       
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User_T> User_T { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerDemographics> CustomerDemographics { get; set; }

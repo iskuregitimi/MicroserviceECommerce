@@ -11,11 +11,12 @@ namespace MicroserviceECommerce.Entities
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RolID { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(20)]
+        [StringLength(10)]
         public string Rolü { get; set; }
 
         public virtual Employees Employees { get; set; }

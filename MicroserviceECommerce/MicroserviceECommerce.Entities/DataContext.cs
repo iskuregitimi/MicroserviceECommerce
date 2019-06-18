@@ -12,7 +12,6 @@
         {
         }
 
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<CustomerDemographics> CustomerDemographics { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
@@ -24,20 +23,11 @@
         public virtual DbSet<Shippers> Shippers { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<Territories> Territories { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<productYedek> productYedek { get; set; }
         public virtual DbSet<Roller> Roller { get; set; }
+        public virtual DbSet<User_T> User_T { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>()
-                .Property(e => e.AUser)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Admin>()
-                .Property(e => e.APassword)
-                .IsFixedLength();
-
             modelBuilder.Entity<CustomerDemographics>()
                 .Property(e => e.CustomerTypeID)
                 .IsFixedLength();
@@ -51,9 +41,10 @@
                 .Property(e => e.CustomerID)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Employees>()
-                .Property(e => e.Password)
-                .IsFixedLength();
+            modelBuilder.Entity<Customers>()
+                .HasMany(e => e.User_T)
+                .WithRequired(e => e.Customers)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employees>()
                 .HasMany(e => e.Employees1)
@@ -76,21 +67,21 @@
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Orders>()
-                .Property(e => e.Status)
+                .Property(e => e.CustomerID)
                 .IsFixedLength();
 
             modelBuilder.Entity<Orders>()
-                .Property(e => e.CustomerID)
+                .Property(e => e.Status)
                 .IsFixedLength();
 
             modelBuilder.Entity<Orders>()
                 .Property(e => e.Freight)
                 .HasPrecision(19, 4);
 
-            //modelBuilder.Entity<Orders>()
-            //    .HasMany(e => e.Order_Details)
-            //    .WithRequired(e => e.Orders)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Orders>()
+                .HasMany(e => e.Order_Details)
+                .WithRequired(e => e.Orders)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Products>()
                 .Property(e => e.UnitPrice)
@@ -110,21 +101,21 @@
                 .WithRequired(e => e.Region)
                 .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Shippers>()
-            //    .HasMany(e => e.Orders)
-            //    .WithOptional(e => e.Shippers)
-            //    .HasForeignKey(e => e.ShipVia);
+            modelBuilder.Entity<Shippers>()
+                .HasMany(e => e.Orders)
+                .WithOptional(e => e.Shippers)
+                .HasForeignKey(e => e.ShipVia);
 
             modelBuilder.Entity<Territories>()
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
 
-            modelBuilder.Entity<productYedek>()
-                .Property(e => e.UnitPrice)
-                .HasPrecision(19, 4);
-
             modelBuilder.Entity<Roller>()
                 .Property(e => e.Rolü)
+                .IsFixedLength();
+
+            modelBuilder.Entity<User_T>()
+                .Property(e => e.CustomerID)
                 .IsFixedLength();
         }
     }

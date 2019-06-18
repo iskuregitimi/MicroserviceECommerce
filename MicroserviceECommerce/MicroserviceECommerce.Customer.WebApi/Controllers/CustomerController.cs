@@ -13,6 +13,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
     {
         Repository<Customers> repo_Customer = new Repository<Customers>();
         Repository<CustomerModell> repo_CustomerModell = new Repository<CustomerModell>();
+        Repository<User_T> repo_User = new Repository<User_T>();
         [HttpGet]
         public List<CustomerModell> GetCustomers()
         {
@@ -36,6 +37,13 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                     Region = item.Region
                 };
                 model.Add(customerModel);
+            }
+
+            if (model!=null)
+            {
+                string token = "T-" + Guid.NewGuid().ToString();
+
+                HttpContext.Current.Response.AddHeader("TOKEN", token);
             }
             return model;
         }
@@ -64,6 +72,52 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             };
             return modell;
             
+
+        }
+
+        [HttpGet]
+        public CustomerModell CustomersLogin(string CompanyName)
+        {
+            Customers customers = repo_Customer.Find(x => x.CompanyName == CompanyName);
+            CustomerModell modell = new CustomerModell
+            {
+                Address = customers.Address,
+                City = customers.City,
+                CompanyName = customers.CompanyName,
+                ContactName = customers.ContactName,
+                ContactTitle = customers.ContactTitle,
+                Country = customers.Country,
+                CustomerID = customers.CustomerID,
+                Fax = customers.Fax,
+                Password = customers.Password,
+                Phone = customers.Phone,
+                PostalCode = customers.PostalCode,
+                Region = customers.Region
+            };
+            //if (customers != null)
+            //{
+            //    User_TModell user_TModell = new User_TModell {
+            //        user_TModell.Token = "T-" + Guid.NewGuid().ToString(),
+            //    user_TModell.CustomerID = customers.CustomerID
+            //    }
+            //    repo_User.Insert(user_TModell);
+            //     HttpContext.Current.Response.AddHeader("TOKEN", user_TModell.Token);
+            //     }
+
+            if (customers!=null)
+            {
+                User_TModell tModell = new User_TModell
+                {
+                    CustomerID = customers.CustomerID,
+                    Token = "T-" + Guid.NewGuid().ToString()
+                
+                };
+                repo_User.Insert(tModell);
+            }
+
+            return modell;
+
+
 
         }
 

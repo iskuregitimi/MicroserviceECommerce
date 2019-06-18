@@ -141,6 +141,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,6 +149,7 @@
     <Compile Include="HttpHelper.cs" />
     <Compile Include="Models\CustomerModell.cs" />
     <Compile Include="Models\EmployeeModell.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -195,6 +197,7 @@
     <Content Include="Views\Employee\InsertEmployee.cshtml" />
     <Content Include="Views\Orders\CustomersOrder.cshtml" />
     <Content Include="Views\Employee\UpdateEmployee.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
