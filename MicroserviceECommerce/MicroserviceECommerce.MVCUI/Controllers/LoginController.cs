@@ -10,18 +10,14 @@ namespace MicroserviceECommerce.MVCUI.Views.Customer
 {
     public class LoginController : Controller
     {
-     
-		[HttpGet]
-		public ActionResult Login(Customers id)
-		{
-			id.CustomerID = id.CompanyName.Substring(0, 5);
-			var client = new RestClient("http://localhost:37786/");
-			var request = new RestRequest("api/Customer/Login", Method.GET);
-			request.AddJsonBody(id);
-			client.Execute(request);
-			return RedirectToAction("CustomerList");
 
-			
+		[HttpGet]
+		public ActionResult Login(string customerid, string password)
+		{
+			Customers customers = new Customers();
+			customers = HttpHelpers.SendRequestLogin<Customers>("http://localhost:37776", "api/Customer/Login", Method.GET, customerid, password);
+			return View(customers);
 		}
-    }
+
+	}
 }

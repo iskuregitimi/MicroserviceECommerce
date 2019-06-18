@@ -27,8 +27,18 @@ namespace MicroserviceECommerce.MVCUI
 			return response.Data;
 		}
 
+		public static T SendRequestLogin<T>(string host, string resource, Method httpMethod, string customerid ,string password) where T : new()
+		{
+			var client = new RestClient(host);
+			var request = new RestRequest(resource);
+			request.AddParameter("customerid", customerid);
+			request.AddParameter("password", password);
+			var response = client.Execute<T>(request);
+			return response.Data;
+		}
 
-		
+
+
 
 
 	}

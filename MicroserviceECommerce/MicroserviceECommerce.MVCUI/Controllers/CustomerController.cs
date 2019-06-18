@@ -51,9 +51,11 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 			customers = HttpHelpers.SendRequestid<Customers>("http://localhost:37776", "api/Customer/GetCustomer", Method.GET, id);
 			return View(customers);
 		}
-		 
-		
+
 	
+
+
+
 
 	}
 }

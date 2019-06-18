@@ -41,10 +41,10 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 			repo.Delete(customer);
 		}
 
-		[HttpPost]
-		public void Login(string customerid)
+		[HttpGet]
+		public void Login(string customerid,string password)
 		{
-			repo.Find(x => x.CustomerID == customerid);
+			repo.Find(x => x.CustomerID == customerid && x.Password==password);
 		}
 
 	}
