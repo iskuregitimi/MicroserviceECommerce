@@ -90,9 +90,9 @@
             @Html.DisplayFor(modelItem => item.Fax)
         </td>
         <td>
-            <input type="submit" class="btn btn-danger" formaction="Orders/OrderDetail/@item.CustomerID" value="detail"/>
-
-            @Html.ActionLink("Orders", "CustomersOrder","Orders",  new { id = item.CustomerID }) |
+          
+            <a class="btn btn-danger" href="~/Orders/CustomersOrder/@item.CustomerID">OrdersDetail</a>
+            @*@Html.ActionLink("Orders", "CustomersOrder","Orders",  new { id = item.CustomerID }) |*@
             @Html.ActionLink("Details", "CustomersDetail", new {  id=item.CustomerID  }) |
             @Html.ActionLink("Delete", "DeleteCustomer", new { id=item.CustomerID  })
         </td>

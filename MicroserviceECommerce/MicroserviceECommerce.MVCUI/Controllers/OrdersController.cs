@@ -13,7 +13,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
         // GET: Orders
         public ActionResult CustomersOrder(string id)
         {
-            List<OrderModel> orderModels = HttpHelper.GetDetail<List<OrderModel>>("http://localhost:37796/", "Order/GetCustomersOrder", id, Method.GET);
+            List<OrderModel> orderModels = HttpHelper.GetDetail<List<OrderModel>>("http://localhost:37786/", "Order/GetCustomersOrder", id, Method.GET);
 
             return View(orderModels);
         }
