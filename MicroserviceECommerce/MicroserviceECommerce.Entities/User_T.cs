@@ -8,16 +8,13 @@ namespace MicroserviceECommerce.Entities
 
     public partial class User_T
     {
-        [Key]
-       
         public int ID { get; set; }
 
-        [Key]
- 
+        [Required]
         [StringLength(5)]
         public string CustomerID { get; set; }
 
-        
+        [Required]
         public string Token { get; set; }
 
         public virtual Customers Customers { get; set; }

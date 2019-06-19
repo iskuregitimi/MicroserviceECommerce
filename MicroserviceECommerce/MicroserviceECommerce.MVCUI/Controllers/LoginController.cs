@@ -20,7 +20,7 @@ namespace MicroserviceECommerce.MVCUI.Controllers
 
         public ActionResult Index(LoginModel model)
         {
-           CustomerModell customerModell=HttpHelper.SendRequest<CustomerModell>("http://localhost:37776/", "Customer/CustomersLogin", Method.GET);
+           CustomerModell customerModell=HttpHelper.SendRequest<CustomerModell>("http://localhost:37776/", "Customer/CustomersLogin", Method.POST);
             if (customerModell.Password==model.Password)
             {
                 return RedirectToAction("Index", "Customer");

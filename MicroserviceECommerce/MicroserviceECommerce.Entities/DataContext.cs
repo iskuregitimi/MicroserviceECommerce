@@ -23,8 +23,8 @@
         public virtual DbSet<Shippers> Shippers { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<Territories> Territories { get; set; }
-        public virtual DbSet<Roller> Roller { get; set; }
         public virtual DbSet<User_T> User_T { get; set; }
+        public virtual DbSet<Roller> Roller { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -110,12 +110,12 @@
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Roller>()
-                .Property(e => e.Rolü)
-                .IsFixedLength();
-
             modelBuilder.Entity<User_T>()
                 .Property(e => e.CustomerID)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Roller>()
+                .Property(e => e.Rolü)
                 .IsFixedLength();
         }
     }

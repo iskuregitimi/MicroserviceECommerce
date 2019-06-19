@@ -75,8 +75,8 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 
         }
 
-        [HttpGet]
-        public CustomerModell CustomersLogin(string CompanyName)
+        [HttpPost]
+        public void CustomersLogin(string CompanyName)
         {
             Customers customers = repo_Customer.Find(x => x.CompanyName == CompanyName);
             CustomerModell modell = new CustomerModell
@@ -112,14 +112,23 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                     Token = "T-" + Guid.NewGuid().ToString()
                 
                 };
-                repo_User.Insert(tModell);
+
+                User_T user_T = new User_T
+                {
+                    CustomerID=tModell.CustomerID,
+                    Token=tModell.Token
+                };
+                repo_User.Insert(user_T);
+            
             }
 
-            return modell;
+            
 
 
 
         }
+
+       
 
         [HttpPost]
 
@@ -167,7 +176,14 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 
             return customers;
         }
-   
+        [HttpPost]
+        public void LogOut(string customersID)
+        {
+
+            User_T user_T = repo_User.Find(x => x.CustomerID == customersID);
+            repo_User.Delete(user_T);
+
+        }
 
     }
 }
