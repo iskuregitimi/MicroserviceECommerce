@@ -17,5 +17,12 @@ namespace MicroserviceECommerce.Core.UI.Controllers
             customerList = HttpHelper.SendRequest<List<CustomerModel>>("http://localhost:37776/", "api/Customer/GetCustomers", Method.GET);
             return View(customerList);
         }
+
+        public IActionResult Details(string id)
+        {
+            CustomerModel customer = new CustomerModel();
+            customer = HttpHelper.GetDetail<CustomerModel>("http://localhost:37776", "api/Customer/GetCustomer", Method.GET, id);
+            return View(customer);
+        }
     }
 }
