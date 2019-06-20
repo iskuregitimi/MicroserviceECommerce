@@ -55,7 +55,6 @@
     <Compile Include="Customers.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Employees.cs" />
-    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Order_Details.cs" />
     <Compile Include="Products.cs" />
@@ -71,6 +70,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

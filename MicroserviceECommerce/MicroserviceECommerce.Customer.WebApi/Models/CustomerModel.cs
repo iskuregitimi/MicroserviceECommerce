@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MicroserviceECommerce.MVCUI.Models
+namespace MicroserviceECommerce.Customer.WebApi.Models
 {
     public class CustomerModel
     {
@@ -45,6 +45,5 @@ namespace MicroserviceECommerce.MVCUI.Models
 
         [StringLength(50)]
         public string Password { get; set; }
-
     }
 }

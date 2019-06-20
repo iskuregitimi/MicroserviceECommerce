@@ -1,4 +1,5 @@
-﻿using MicroserviceECommerce.Entities;
+﻿//using MicroserviceECommerce.Entities;
+using MicroserviceECommerce.MVCUI.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,15 @@ namespace MicroserviceECommerce.MVCUI.Controllers
     {
         public ActionResult Index()
         {
-            List<Customers> customerList = new List<Customers>();
-            customerList = HttpHelper.SendRequest<List<Customers>>("http://localhost:37776/", "api/Customer/GetCustomers", Method.GET);
+            List<CustomerModel> customerList = new List<CustomerModel>();
+            customerList = HttpHelper.SendRequest<List<CustomerModel>>("http://localhost:37776/", "api/Customer/GetCustomers", Method.GET);
             return View(customerList);
         }
 
         public ActionResult GetCustomer(string id)
         {
-            Customers customer = new Customers();
-            customer = HttpHelper.GetDetail<Customers>("http://localhost:37776","api/Customer/GetCustomer",Method.GET,id);
+            CustomerModel customer = new CustomerModel();
+            customer = HttpHelper.GetDetail<CustomerModel>("http://localhost:37776", "api/Customer/GetCustomer", Method.GET, id);
             return View(customer);
         }
 

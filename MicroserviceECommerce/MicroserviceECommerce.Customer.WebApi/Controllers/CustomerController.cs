@@ -1,5 +1,5 @@
-﻿using MicroserviceECommerce.Entities;
-using MicroserviceECommerce.MVCUI.Models;
+﻿using MicroserviceECommerce.Customer.WebApi.Models;
+using MicroserviceECommerce.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,8 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             {
                 CustomerModel model = new CustomerModel()
                 {
-                    Address=item.Address,
+                    CustomerID = item.CustomerID,
+                    Address =item.Address,
                     City=item.City,
                     CompanyName=item.CompanyName,
                     ContactName=item.ContactName,
@@ -45,6 +46,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 
             CustomerModel model = new CustomerModel()
             {
+                CustomerID = customer.CustomerID,
                 Address = customer.Address,
                 City = customer.City,
                 CompanyName = customer.CompanyName,

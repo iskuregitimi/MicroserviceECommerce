@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MicroserviceECommerce.Entities.Customers>
+﻿@model IEnumerable<MicroserviceECommerce.MVCUI.Models.CustomerModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.CompanyName)
         </th>
@@ -50,6 +53,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.CompanyName)
         </td>
