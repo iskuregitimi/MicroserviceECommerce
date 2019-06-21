@@ -12,6 +12,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
     {
         DataContext db = new DataContext();
 
+        [HttpGet]
         public List<CustomerModel> GetCustomers()
         {
             List<Customers> customerList = db.Customers.ToList();
@@ -61,6 +62,29 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             };
 
             return model;
+        }
+
+        [HttpPost]
+        public void InsertCustomer(CustomerModel customer)
+        {
+            Customers customer2 = new Customers()
+            {
+                CustomerID = customer.CustomerID,
+                Address = customer.Address,
+                City = customer.City,
+                CompanyName = customer.CompanyName,
+                ContactName = customer.ContactName,
+                ContactTitle = customer.ContactTitle,
+                Country = customer.Country,
+                Fax = customer.Fax,
+                Password = customer.Password,
+                Phone = customer.Phone,
+                PostalCode = customer.PostalCode,
+                Region = customer.Region
+            };
+
+            db.Customers.Add(customer2);
+            db.SaveChanges();
         }
 
     }

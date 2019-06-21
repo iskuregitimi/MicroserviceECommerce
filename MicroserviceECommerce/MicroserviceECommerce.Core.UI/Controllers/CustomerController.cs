@@ -11,6 +11,7 @@ namespace MicroserviceECommerce.Core.UI.Controllers
 {
     public class CustomerController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             List<CustomerModel> customerList = new List<CustomerModel>();
@@ -18,11 +19,27 @@ namespace MicroserviceECommerce.Core.UI.Controllers
             return View(customerList);
         }
 
+        [HttpGet]
         public IActionResult Details(string id)
         {
             CustomerModel customer = new CustomerModel();
             customer = HttpHelper.GetDetail<CustomerModel>("http://localhost:37776", "api/Customer/GetCustomer", Method.GET, id);
             return View(customer);
+        }
+
+        [HttpGet]
+        public IActionResult InsertCustomer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult InsertCustomer(CustomerModel customer)
+        {
+            HttpHelper.InsertCustomer<CustomerModel>("http://localhost:37776", "api/Customer/InsertCustomer", Method.POST, customer);
+
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using MicroserviceECommerce.Core.UI.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,16 @@ namespace MicroserviceECommerce.MVCUI
             var client = new RestClient(host);
             var request = new RestRequest(resource, httpMethod);
             request.AddParameter("id", id);
+            var response2 = client.Execute<T>(request);
+            return response2.Data;
+        }
+
+        public static T InsertCustomer<T>(string host, string resource, Method httpMethod, CustomerModel customer )
+           where T : new()
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource, httpMethod);
+            request.AddJsonBody(customer);
             var response2 = client.Execute<T>(request);
             return response2.Data;
         }
