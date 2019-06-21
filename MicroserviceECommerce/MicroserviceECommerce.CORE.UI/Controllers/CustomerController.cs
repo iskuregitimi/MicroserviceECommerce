@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MicroserviceECommerce.Entities;
+using MicroserviceECommerce.CORE.UI.Models;
+//using MicroserviceECommerce.Entities;
 using MicroserviceECommerce.MVCUI;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +14,32 @@ namespace MicroserviceECommerce.CORE.UI.Controllers
         public IActionResult Index()
         {
 
-            List<Customers> customerList = HTTPHelper.SendRequest<List<Customers>>("http://localhost:37776", "api/Customer/GetCustomers", RestSharp.Method.GET);
+            List<CustomerModel> customerList = HTTPHelper.SendRequest<List<CustomerModel>>("http://localhost:37776", "api/Customer/GetCustomers", RestSharp.Method.GET);
             return View(customerList);
         }
+
         public IActionResult customerDetail(string id)
         {
-            Customers customer = new Customers();
-            customer = HTTPHelper.GetDetail<Customers>("http://localhost:37776", "api/Customer/GetModelCustomer", RestSharp.Method.GET, id);
+            CustomerModel customer = new CustomerModel();
+            customer = HTTPHelper.GetDetail<CustomerModel>("http://localhost:37776", "api/Customer/GetCustomer", RestSharp.Method.GET, id);
             return View(customer);
 
-
         }
+
+        [HttpGet]
+        public IActionResult AddCustomer()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCustomer(CustomerModel customer)
+        {
+            HTTPHelper.AddCustomer<CustomerModel>("http://localhost:37776", "api/Customer/AddCustomer", RestSharp.Method.POST, customer);
+
+            return RedirectToAction("Index");
+        }
+       
     }
 }
