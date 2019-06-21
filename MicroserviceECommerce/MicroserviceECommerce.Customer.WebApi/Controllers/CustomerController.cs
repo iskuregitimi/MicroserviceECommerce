@@ -37,6 +37,25 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             }
             return modelCustomersList;
         }
+        public ModelCustomer GetModelCustomer(string id)
+        {
+            Customers customer = dataContext.Customers.FirstOrDefault(x => x.CustomerID == id);
+            ModelCustomer modelCustomer = new ModelCustomer
+            {
+                CustomerID = customer.CustomerID,
+                Address = customer.Address,
+                City = customer.City,
+                CompanyName = customer.CompanyName,
+                ContactName=customer.ContactName,
+                ContactTitle=customer.ContactTitle,
+                Country=customer.Country,
+                Fax=customer.Fax,
+                Password=customer.Password,
+                Phone=customer.Phone,
+                PostalCode=customer.PostalCode
+            };
+            return modelCustomer;
+        }
         
     }
 }
