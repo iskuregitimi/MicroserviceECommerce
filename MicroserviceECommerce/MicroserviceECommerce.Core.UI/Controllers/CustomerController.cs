@@ -37,8 +37,13 @@ namespace MicroserviceECommerce.Core.UI.Controllers
         public IActionResult InsertCustomer(CustomerModel customer)
         {
             HttpHelper.InsertCustomer<CustomerModel>("http://localhost:37776", "api/Customer/InsertCustomer", Method.POST, customer);
+            return RedirectToAction("Index");
+        }
 
-
+        [HttpGet]
+        public IActionResult DeleteCustomer(string id)
+        {
+            HttpHelper.DeleteCustomer("http://localhost:37776", "api/Customer/DeleteCustomer", Method.DELETE, id);
             return RedirectToAction("Index");
         }
     }

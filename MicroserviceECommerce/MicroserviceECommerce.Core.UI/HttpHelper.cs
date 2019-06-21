@@ -18,7 +18,7 @@ namespace MicroserviceECommerce.MVCUI
             return response2.Data;
         }
 
-        public static T GetDetail<T>(string host, string resource, Method httpMethod,string id)
+        public static T GetDetail<T>(string host, string resource, Method httpMethod, string id)
            where T : new()
         {
             var client = new RestClient(host);
@@ -28,7 +28,7 @@ namespace MicroserviceECommerce.MVCUI
             return response2.Data;
         }
 
-        public static T InsertCustomer<T>(string host, string resource, Method httpMethod, CustomerModel customer )
+        public static T InsertCustomer<T>(string host, string resource, Method httpMethod, CustomerModel customer)
            where T : new()
         {
             var client = new RestClient(host);
@@ -36,6 +36,14 @@ namespace MicroserviceECommerce.MVCUI
             request.AddJsonBody(customer);
             var response2 = client.Execute<T>(request);
             return response2.Data;
+        }
+
+        public static void DeleteCustomer(string host, string resource, Method httpMethod, string id)
+        {
+            var client = new RestClient(host);
+            var request = new RestRequest(resource, httpMethod);
+            request.AddParameter("id", id);
+            var response2 = client.Execute(request);
         }
     }
 }

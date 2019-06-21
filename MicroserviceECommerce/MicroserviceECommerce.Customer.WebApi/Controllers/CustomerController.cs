@@ -67,7 +67,7 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
         [HttpPost]
         public void InsertCustomer(CustomerModel customer)
         {
-            Customers customer2 = new Customers()
+            Customers newCustomer = new Customers()
             {
                 CustomerID = customer.CustomerID,
                 Address = customer.Address,
@@ -83,7 +83,15 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
                 Region = customer.Region
             };
 
-            db.Customers.Add(customer2);
+            db.Customers.Add(newCustomer);
+            db.SaveChanges();
+        }
+
+        [HttpDelete]
+        public void DeleteCustomer(string id)
+        {
+            Customers customer = db.Customers.FirstOrDefault(x => x.CustomerID == id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
         }
 
