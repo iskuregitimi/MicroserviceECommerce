@@ -95,5 +95,22 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             db.SaveChanges();
         }
 
+        [HttpPut]
+        public void UpdateCustomer(CustomerModel updatedCustomer)
+        {
+            Customers customer = db.Customers.FirstOrDefault(x => x.CustomerID == updatedCustomer.CustomerID);
+            customer.Address = updatedCustomer.Address;
+            customer.City = updatedCustomer.City;
+            customer.CompanyName = updatedCustomer.CompanyName;
+            customer.ContactName = updatedCustomer.ContactName;
+            customer.ContactTitle = updatedCustomer.ContactTitle;
+            customer.Country = updatedCustomer.Country;
+            customer.Fax = updatedCustomer.Fax;
+            customer.Password = updatedCustomer.Password;
+            customer.Phone = updatedCustomer.Phone;
+            customer.PostalCode = updatedCustomer.PostalCode;
+            customer.Region = updatedCustomer.Region;
+            db.SaveChanges();
+        }
     }
 }
