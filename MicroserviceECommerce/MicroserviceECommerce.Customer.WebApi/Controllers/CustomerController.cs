@@ -176,14 +176,14 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
 
             return customers;
         }
-        [HttpPost]
-        public void LogOut(string customersID)
-        {
+        //[HttpPost]
+        //public void LogOut(string customersID)
+        //{
 
-            User_T user_T = repo_User.Find(x => x.CustomerID == customersID);
-            repo_User.Delete(user_T);
+        //    User_T user_T = repo_User.Find(x => x.CustomerID == customersID);
+        //    repo_User.Delete(user_T);
 
-        }
+        //}
 
     }
 }
