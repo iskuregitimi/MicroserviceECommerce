@@ -74,8 +74,15 @@ namespace MicroserviceECommerce.Customer.WebApi.Controllers
             };
             dataContext.Customers.Add(newcustomer);
             dataContext.SaveChanges();
-            
+        }[HttpDelete]
+        public void DeleteCustomer(string id)
+        {
+            Customers customer=dataContext.Customers.Where(x => x.CustomerID == id).FirstOrDefault();
+            dataContext.Customers.Remove(customer);
+            dataContext.SaveChanges();
         }
+
+
 
 
 

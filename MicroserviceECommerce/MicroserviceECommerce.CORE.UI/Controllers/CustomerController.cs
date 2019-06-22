@@ -40,6 +40,15 @@ namespace MicroserviceECommerce.CORE.UI.Controllers
 
             return RedirectToAction("Index");
         }
-       
+        [HttpGet]
+        public IActionResult DeleteCustomer(string id)
+        {
+            HTTPHelper.DeleteCustomer("http://localhost:37776", "api/Customer/DeleteCustomer",RestSharp.Method.DELETE, id);
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
