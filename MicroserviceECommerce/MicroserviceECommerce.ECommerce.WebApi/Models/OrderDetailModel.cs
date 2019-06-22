@@ -8,8 +8,8 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Models
 {
     public class OrderDetailModel
     {
-        public string Orders { get; set; }
-        public string Products { get; set; }
+        public string ShipName { get; set; }
+        public string ProductName { get; set; }
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public decimal UnitPrice { get; set; }

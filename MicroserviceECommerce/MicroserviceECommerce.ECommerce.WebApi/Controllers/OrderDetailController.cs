@@ -19,9 +19,9 @@ namespace MicroserviceECommerce.ECommerce.WebApi.Controllers
                 {
                     OrderID=a.OrderID,
                     Discount=a.Discount,
-                    Orders=a.Orders.ShipName,
+                    ShipName=a.Orders.ShipName,
                     ProductID=a.ProductID,
-                    Products=a.Products.ProductName,
+                    ProductName=a.Products.ProductName,
                     Quantity=a.Quantity,
                     UnitPrice=a.UnitPrice
                 }).ToList();

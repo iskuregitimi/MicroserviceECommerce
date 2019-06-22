@@ -22,10 +22,9 @@ namespace MicroserviceECommerce.MVCUI.Controllers
             customers = CustomerHelper.GetList<List<Customers>>("http://localhost:37776", "Customer/GetCustomers", Method.GET);
             return View(customers);
         }
-        public ActionResult GetCustomer()
+        public ActionResult GetCustomer(string Id)
         {
-
-            Customers customers = CustomerHelper.GetList<Customers>("http://localhost:37776", "Customer/FindCustomer", Method.GET);
+            Customers customers = CustomerHelper.GetDetail<Customers>("http://localhost:37776", "Customer/FindCustomer", Method.GET,Id);
             return View(customers);
         }
 
