@@ -19,6 +19,14 @@ namespace MicroserviceECommerce.Core.UI.Controllers
         }
 
         [HttpGet]
+        public IActionResult List()
+        {
+            List<Customers> customerList = new List<Customers>();
+            customerList = HttpHelper.GetData<List<Customers>>("https://localhost:44376", "api/Customer/List", Method.GET);
+            return View(customerList);
+        }
+
+        [HttpGet]
         public IActionResult Details(string id)
         {
             CustomerModel customer = new CustomerModel();
