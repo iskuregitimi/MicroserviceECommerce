@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace MicroserviceECommerce.CoreApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CustomerController:ControllerBase
     {
         NorthwindContext _northwindContext;

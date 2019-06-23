@@ -15,6 +15,12 @@ namespace MicroserviceECommerce.CORE.UI.Controllers
             return View(customerList);
         }
 
+        public IActionResult List()
+        {
+            List<CustomerModel> customerList = HTTPHelper.GetData<List<CustomerModel>>("http://localhost:62419", "api/Customer/List", RestSharp.Method.GET);
+            return View(customerList);
+        }
+
         public IActionResult customerDetail(string id)
         {
             CustomerModel customer = new CustomerModel();

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MicroserviceECommerce.CoreApi.DataBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using WebApplication2.DataBase;
 
-namespace MicroserviceECommerce.CoreApi
+namespace WebApplication2
 {
     public class Startup
     {
@@ -35,8 +34,8 @@ namespace MicroserviceECommerce.CoreApi
 
             var connection = @"Server=DESKTOP-6C1BGNN\FATIHKAYA_19;Database=Northwind; user id=sa; password=123";
             services.AddDbContext<NorthwindContext>
-                (options => options.UseSqlServer(connection));
 
+                (options => options.UseSqlServer(connection));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
